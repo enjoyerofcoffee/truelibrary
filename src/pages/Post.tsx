@@ -23,7 +23,26 @@ import { useDisclosure } from "@mantine/hooks";
 import NoArticleFound from "./NoArticleFound";
 
 const fetchPost = async (slug: string) => {
-  const query = `*[_type == "post" && slug.current == $slug][0]`;
+  const query = `*[_type == "post" && slug.current == $slug][0] {
+  _id,
+  title,
+  slug,
+  image {
+    asset->{
+      url
+    }
+  },
+  body[]{
+    ...,
+    asset->{
+      _id,
+      url
+    }
+  },
+  tags,
+  author,
+  publishedAt
+}`;
   const params = { slug };
   const post = await sanityClient.fetch(query, params);
   return post;
@@ -149,6 +168,14 @@ function PostPage() {
               ),
               blockquote: ({ children }: { children: string }) => (
                 <Blockquote>{children}</Blockquote>
+              ),
+              image: ({ asset }: { asset: { url: string } }) => (
+                <img
+                  src={asset.url}
+                  alt=""
+                  className={classes.image}
+                  loading="lazy"
+                />
               ),
             }}
           />

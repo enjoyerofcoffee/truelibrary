@@ -26,8 +26,18 @@ const fetchNewPosts = async () => {
   _id,
   title,
   slug,
-  image,
-  body,
+  image {
+    asset->{
+      url
+    }
+  },
+  body[]{
+    ...,
+    asset->{
+      _id,
+      url
+    }
+  },
   tags,
   publishedAt
 }`;
