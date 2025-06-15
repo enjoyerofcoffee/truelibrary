@@ -34,6 +34,11 @@ const stopWords = new Set([
   "but",
   "not",
   "my",
+  "he",
+  "she",
+  "said",
+  "his",
+  "her",
 ]);
 
 function SearchLibrary() {
@@ -158,34 +163,42 @@ function SearchLibrary() {
         value={search}
       />
       <Grid py={24}>
-        {matchedPosts.map(({ post, paragraphs }) => (
-          <Grid.Col
-            span={12}
-            key={post._id}
-            className={classes.search__result}
-            onClick={() => onClick(post.slug.current)}
-          >
-            <Text fw={800}>{post.title}</Text>
-            {paragraphs.map((para, idx) => (
-              <Text
-                key={idx}
-                c="dimmed"
-                size="sm"
-                mt={4}
-                dangerouslySetInnerHTML={{
-                  __html: highlightMatches(
-                    para,
-                    debouncedSearch
-                      .toLowerCase()
-                      .replace(/[^\w\s]/gi, "")
-                      .split(/\s+/)
-                      .filter((word) => word && !stopWords.has(word))
-                  ),
-                }}
-              />
-            ))}
+        {debouncedSearch.trim() && matchedPosts.length === 0 ? (
+          <Grid.Col span={12}>
+            <Text c="dimmed" size="sm" ta="center">
+              No results found. Try different keywords.
+            </Text>
           </Grid.Col>
-        ))}
+        ) : (
+          matchedPosts.map(({ post, paragraphs }) => (
+            <Grid.Col
+              span={12}
+              key={post._id}
+              className={classes.search__result}
+              onClick={() => onClick(post.slug.current)}
+            >
+              <Text fw={800}>{post.title}</Text>
+              {paragraphs.map((para, idx) => (
+                <Text
+                  key={idx}
+                  c="dimmed"
+                  size="sm"
+                  mt={4}
+                  dangerouslySetInnerHTML={{
+                    __html: highlightMatches(
+                      para,
+                      debouncedSearch
+                        .toLowerCase()
+                        .replace(/[^\w\s]/gi, "")
+                        .split(/\s+/)
+                        .filter((word) => word && !stopWords.has(word))
+                    ),
+                  }}
+                />
+              ))}
+            </Grid.Col>
+          ))
+        )}
       </Grid>
     </Container>
   );
