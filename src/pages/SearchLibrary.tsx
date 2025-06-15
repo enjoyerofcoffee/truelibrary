@@ -1,4 +1,10 @@
-import { Autocomplete, Container, Grid, Text } from "@mantine/core";
+import {
+  Autocomplete,
+  Container,
+  Grid,
+  Text,
+  SegmentedControl,
+} from "@mantine/core";
 import PageTransition from "../animations/PageTransition";
 import { useEffect, useState } from "react";
 import { IconSearch } from "@tabler/icons-react";
@@ -6,162 +12,145 @@ import { sanityClient } from "../client";
 import type { Post } from "../types";
 import classes from "./SearchLibrary.module.css";
 import { useNavigate } from "react-router";
+import { removeStopwords } from "stopword";
 
-const stopWords = new Set([
-  "the",
-  "is",
-  "in",
-  "and",
-  "of",
-  "to",
-  "a",
-  "an",
-  "that",
-  "it",
-  "on",
-  "for",
-  "with",
-  "as",
-  "this",
-  "be",
-  "are",
-  "was",
-  "by",
-  "at",
-  "from",
-  "or",
-  "which",
-  "but",
-  "not",
-  "my",
-  "he",
-  "she",
-  "said",
-  "his",
-  "her",
-]);
+type SearchMode = "keywords" | "sentence";
 
 function SearchLibrary() {
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [matchedPosts, setMatchedPosts] = useState<
-    { post: Post; paragraphs: string[] }[]
+    { post: Post; sentences: string[] }[]
   >([]);
+  const [mode, setMode] = useState<SearchMode>("keywords");
   const navigate = useNavigate();
 
-  // Debounce the search input
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setDebouncedSearch(search);
-    }, 1000);
+    const timeout = setTimeout(() => setDebouncedSearch(search), 500);
     return () => clearTimeout(timeout);
   }, [search]);
 
   useEffect(() => {
+    const normalize = (text: string) =>
+      text
+        .toLowerCase()
+        .replace(/[^\w\s]/gi, "")
+        .trim();
+
     const fetchPosts = async () => {
-      const normalize = (text: string) =>
-        text
-          .toLowerCase()
-          .replace(/[^\w\s]/gi, "")
-          .trim();
-
       const searchTerm = normalize(debouncedSearch);
-      const searchWords = searchTerm
-        .split(/\s+/)
-        .filter((word) => word && !stopWords.has(word));
+      const rawWords = searchTerm.split(/\s+/).filter(Boolean);
+      const keywords =
+        mode === "keywords" ? removeStopwords(rawWords) : rawWords;
 
-      if (!debouncedSearch.trim() || searchWords.length === 0) {
+      if (!searchTerm || keywords.length === 0) {
         setMatchedPosts([]);
         return;
       }
 
       const query = `*[_type == "post"] | order(publishedAt desc)[0...50] {
-        _id,
-        title,
-        slug,
-        image,
-        body,
-        tags,
-        publishedAt
+        _id, title, slug, image, body, tags, publishedAt
       }`;
 
       try {
         const results: Post[] = await sanityClient.fetch(query);
 
-        const matched = results
+        const matches = results
           .map((post) => {
-            const plainBody =
+            const plainText =
               post.body
                 ?.map((block: any) =>
                   block.children?.map((child: any) => child.text).join(" ")
                 )
-                .join("\n\n") || "";
+                .join(" ") || "";
 
-            const paragraphs = plainBody.split(/\n{2,}/);
+            const sentences = plainText.match(/[^\.!\?]+[\.!\?]+/g) || [];
 
-            const matchedParagraphs = paragraphs
-              .map((paragraph) => {
-                const normalized = normalize(paragraph);
-                const fullMatch = normalized.includes(searchTerm);
-                const partialMatches = searchWords.filter((word) =>
-                  normalized.includes(word)
-                ).length;
+            const matchingSentences = sentences
+              .map((sentence) => {
+                const normalized = normalize(sentence);
+                const fullMatch =
+                  mode === "sentence" && normalized.includes(searchTerm);
+                const keywordMatches =
+                  mode === "keywords"
+                    ? keywords.filter((word) => normalized.includes(word))
+                    : [];
 
-                if (fullMatch || partialMatches > 0) {
-                  return {
-                    paragraph,
-                    score: (fullMatch ? 10 : 0) + partialMatches,
-                  };
-                }
-                return null;
+                const score = fullMatch ? 10 : keywordMatches.length;
+
+                return score > 0 ? { sentence, score } : null;
               })
               .filter(Boolean)
               .sort((a, b) => b!.score - a!.score)
-              .map((match) => match!.paragraph);
+              .map((match) => match!.sentence);
 
-            if (matchedParagraphs.length > 0) {
-              return { post, paragraphs: matchedParagraphs.slice(0, 3) };
+            if (matchingSentences.length > 0) {
+              return {
+                post,
+                sentences: matchingSentences.slice(0, 5),
+              };
             }
+
             return null;
           })
-          .filter(Boolean) as { post: Post; paragraphs: string[] }[];
+          .filter(Boolean) as { post: Post; sentences: string[] }[];
 
-        setMatchedPosts(matched);
+        setMatchedPosts(matches);
       } catch (err) {
         console.error("Failed to fetch posts:", err);
       }
     };
 
     fetchPosts();
-  }, [debouncedSearch]);
+  }, [debouncedSearch, mode]);
 
-  // Highlight keywords in a paragraph
   const highlightMatches = (text: string, keywords: string[]) => {
-    let highlighted = text;
-    keywords.forEach((word) => {
-      const regex = new RegExp(`(${word})`, "gi");
-      highlighted = highlighted.replace(
-        regex,
-        `<span style="color: var(--highlight-color); font-weight: 500;">$1</span>`
-      );
-    });
-    return highlighted;
+    const pattern = keywords.join("|");
+    const regex = new RegExp(`(${pattern})`, "gi");
+    return text.replace(
+      regex,
+      `<span style="color: var(--highlight-color); font-weight: 500;">$1</span>`
+    );
   };
 
   const onClick = (slug: string) => {
     navigate(`/post/${slug}`);
   };
 
+  // Extract words for highlighting
+  const searchWords = (() => {
+    const normalized = debouncedSearch
+      .toLowerCase()
+      .replace(/[^\w\s]/gi, "")
+      .split(/\s+/)
+      .filter(Boolean);
+
+    return mode === "keywords" ? removeStopwords(normalized) : normalized;
+  })();
+
   return (
     <Container>
       <h1>Search</h1>
+
+      <SegmentedControl
+        fullWidth
+        mt="md"
+        mb="md"
+        data={[
+          { label: "Keywords", value: "keywords" },
+          { label: "Full Sentence", value: "sentence" },
+        ]}
+        value={mode}
+        onChange={(value) => setMode(value as SearchMode)}
+      />
+
       <Autocomplete
-        flex={2}
         onChange={setSearch}
         placeholder="Search articles..."
         leftSection={<IconSearch size={16} stroke={1.5} />}
         value={search}
       />
+
       <Grid py={24}>
         {debouncedSearch.trim() && matchedPosts.length === 0 ? (
           <Grid.Col span={12}>
@@ -170,7 +159,7 @@ function SearchLibrary() {
             </Text>
           </Grid.Col>
         ) : (
-          matchedPosts.map(({ post, paragraphs }) => (
+          matchedPosts.map(({ post, sentences }) => (
             <Grid.Col
               span={12}
               key={post._id}
@@ -178,21 +167,14 @@ function SearchLibrary() {
               onClick={() => onClick(post.slug.current)}
             >
               <Text fw={800}>{post.title}</Text>
-              {paragraphs.map((para, idx) => (
+              {sentences.map((sentence, idx) => (
                 <Text
                   key={idx}
                   c="dimmed"
                   size="sm"
                   mt={4}
                   dangerouslySetInnerHTML={{
-                    __html: highlightMatches(
-                      para,
-                      debouncedSearch
-                        .toLowerCase()
-                        .replace(/[^\w\s]/gi, "")
-                        .split(/\s+/)
-                        .filter((word) => word && !stopWords.has(word))
-                    ),
+                    __html: highlightMatches(sentence, searchWords),
                   }}
                 />
               ))}

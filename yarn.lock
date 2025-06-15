@@ -3088,6 +3088,11 @@
   resolved "https://registry.yarnpkg.com/@types/speakingurl/-/speakingurl-13.0.6.tgz#fb64d905bb802e89facca641ed4ff5ed13854c88"
   integrity sha512-ywkRHNHBwq0mFs/2HRgW6TEBAzH66G8f2Txzh1aGR0UC9ZoAUHfHxLZGDhwMpck4BpSnB61eNFIFmlV+TJ+KUA==
 
+"@types/stopword@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/@types/stopword/-/stopword-2.0.3.tgz#4e7c629000a74eb56f772fa0f4eb77775de425de"
+  integrity sha512-hioMj0lOvISM+EDevf7ijG8EMbU+J3pj4SstCyfQC1t39uPYpAe7beSfBdU6c1d9jeECTQQtR3UJWtVoUO8Weg==
+
 "@types/stylis@4.2.5":
   version "4.2.5"
   resolved "https://registry.yarnpkg.com/@types/stylis/-/stylis-4.2.5.tgz#1daa6456f40959d06157698a653a9ab0a70281df"
@@ -8002,6 +8007,11 @@ stdin-discarder@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/stdin-discarder/-/stdin-discarder-0.2.2.tgz#390037f44c4ae1a1ae535c5fe38dc3aba8d997be"
   integrity sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==
+
+stopword@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.npmjs.org/stopword/-/stopword-3.1.5.tgz#0a4ededb0655174ddf70cee027cd6f359b51ed76"
+  integrity sha512-OgLYGVFCNa430WOrj9tYZhQge5yg6vd6JsKredveAqEhdLVQkfrpnQIGjx0L9lLqzL4Kq4J8yNTcfQR/MpBwhg==
 
 stream-each@^1.1.0:
   version "1.2.3"
