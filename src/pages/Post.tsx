@@ -19,8 +19,8 @@ import Pill from "../components/Pill";
 import { type Post } from "../types";
 import { badges } from "../utils";
 import classes from "./Post.module.css";
-import { LinkPreview } from "@dhaiwat10/react-link-preview";
 import { useDisclosure } from "@mantine/hooks";
+import UrlPreview from "../components/LinkPreview";
 
 const fetchPost = async (slug: string) => {
   const query = `*[_type == "post" && slug.current == $slug][0]`;
@@ -132,15 +132,9 @@ function PostPage() {
             content={data.body}
             serializers={{
               link: ({ children }: { children: string }) => (
-                <LinkPreview
-                  url={children}
-                  width={400}
-                  fallback={
-                    <a href={children} target="_target">
-                      {children}
-                    </a>
-                  }
-                />
+                <a href={children} target={"_blank"}>
+                  {children}
+                </a>
               ),
               youtube: ({ url }: { url: string }) => (
                 <div className={classes.youtube}>
