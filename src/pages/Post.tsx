@@ -20,7 +20,7 @@ import { type Post } from "../types";
 import { badges } from "../utils";
 import classes from "./Post.module.css";
 import { useDisclosure } from "@mantine/hooks";
-import UrlPreview from "../components/LinkPreview";
+import NoArticleFound from "./NoArticleFound";
 
 const fetchPost = async (slug: string) => {
   const query = `*[_type == "post" && slug.current == $slug][0]`;
@@ -31,7 +31,7 @@ const fetchPost = async (slug: string) => {
 
 function PostPage() {
   const { slug } = useParams<{ slug: string }>();
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery("(max-width: 1024px)");
   const [drawerOpened, { open: openDrawer, close: closeDrawer }] =
     useDisclosure(false);
 
@@ -43,7 +43,7 @@ function PostPage() {
 
   if (isPending) return <div>Loading...</div>;
   if (isError) return <div>Error: {(error as Error).message}</div>;
-  if (!data) return <div>No post found</div>;
+  if (!data) return <NoArticleFound />;
 
   const tableOfContents = (
     <>
@@ -73,7 +73,7 @@ function PostPage() {
           gap={12}
           className={classes.tags__wrapper}
           pb={12}
-          visibleFrom="xs"
+          visibleFrom="md"
         >
           <Stack w={320}>
             <Text size="sm" ml={4} mt="sm" my="sm" c="dimmed">
