@@ -7,7 +7,6 @@ function Home() {
     <Container className={classes.container} size={"sm"} py={24}>
       <Flex align={"center"} direction={"column"}>
         <h1>True Islam Library</h1>
-        {/* <img height={60} src={Bis} /> */}
       </Flex>
     </Container>
   );

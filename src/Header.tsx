@@ -3,10 +3,11 @@ import { useDisclosure } from "@mantine/hooks";
 import classes from "./Header.module.css";
 import TrueIslamLibraryIcon from "./assets/trueislam.webp";
 import { headerRoutes } from "./router";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
+  const navigate = useNavigate();
 
   const items = headerRoutes.map((route) => (
     <NavLink key={route.title} to={route.path} className={classes.link}>
@@ -38,7 +39,13 @@ export function Header() {
               ))}
             </Menu.Dropdown>
           </Menu>
-          <img className={classes.icon} width={40} src={TrueIslamLibraryIcon} />
+          <div onClick={() => navigate("/")}>
+            <img
+              className={classes.icon}
+              width={40}
+              src={TrueIslamLibraryIcon}
+            />
+          </div>
         </Flex>
         <Group visibleFrom="sm">
           <Group ml={50} gap={5} className={classes.links}>
