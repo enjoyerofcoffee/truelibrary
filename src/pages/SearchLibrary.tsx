@@ -155,7 +155,6 @@ function SearchLibrary() {
         onChange={setSearch}
         placeholder="Search articles..."
         leftSection={<IconSearch size={16} stroke={1.5} />}
-        visibleFrom="xs"
         value={search}
       />
       <Grid py={24}>

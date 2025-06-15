@@ -118,6 +118,11 @@ export const postType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "author",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "publishedAt",
       type: "datetime",
       initialValue: () => new Date().toISOString(),

@@ -87,7 +87,6 @@ function Library() {
           placeholder="Search"
           onChange={setSearch}
           leftSection={<IconSearch size={16} stroke={1.5} />}
-          visibleFrom="xs"
         />
         <Text size="sm" mt="sm" c="dimmed">
           Filters

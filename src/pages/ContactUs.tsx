@@ -6,10 +6,8 @@ import {
   Center,
   Grid,
   Card,
-  Group,
-  Flex,
 } from "@mantine/core";
-import { IconBrandDiscord, IconMail } from "@tabler/icons-react";
+import { IconMail } from "@tabler/icons-react";
 
 export default function ContactUs() {
   return (

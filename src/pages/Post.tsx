@@ -86,6 +86,12 @@ function PostPage() {
                 </Pill>
               ))}
             </Flex>
+            <Stack>
+              <Text size="sm" ml={4} mt="sm" my="sm" c="dimmed">
+                Author
+              </Text>
+              <Text ml={4}>{data.author}</Text>
+            </Stack>
             {!isMobile && tableOfContents}
           </Stack>
         </Group>

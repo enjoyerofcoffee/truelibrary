@@ -13,6 +13,7 @@ export type Post = {
     _type: string;
   };
   title: string;
+  author: string;
   body: PortableTextDocument;
   tags: string[];
   _id: string;
