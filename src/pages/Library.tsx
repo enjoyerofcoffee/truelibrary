@@ -4,7 +4,6 @@ import {
   Grid,
   Group,
   Text,
-  Flex,
   BackgroundImage,
   Stack,
 } from "@mantine/core";
@@ -23,7 +22,7 @@ import type { Post } from "../types";
 import PageTransition from "../animations/PageTransition";
 
 const fetchNewPosts = async () => {
-  const query = `*[_type == "post"] | order(publishedAt desc)[0...3] {
+  const query = `*[_type == "post"] {
   _id,
   title,
   slug,
@@ -38,7 +37,7 @@ const fetchNewPosts = async () => {
 
 function Library() {
   const navigate = useNavigate();
-  const { isPending, isError, data, error } = useQuery<Post[]>({
+  const { data } = useQuery<Post[]>({
     queryKey: ["newPosts"],
     queryFn: fetchNewPosts,
   });

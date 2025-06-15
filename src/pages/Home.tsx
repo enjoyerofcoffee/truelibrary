@@ -1,4 +1,4 @@
-import { Container, Flex, Text } from "@mantine/core";
+import { Container, Flex } from "@mantine/core";
 import PageTransition from "../animations/PageTransition";
 import classes from "./Home.module.css";
 

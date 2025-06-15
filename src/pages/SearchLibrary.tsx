@@ -1,4 +1,4 @@
-import { Autocomplete, Container, Divider, Grid, Text } from "@mantine/core";
+import { Autocomplete, Container, Grid, Text } from "@mantine/core";
 import PageTransition from "../animations/PageTransition";
 import { useEffect, useState } from "react";
 import { IconSearch } from "@tabler/icons-react";

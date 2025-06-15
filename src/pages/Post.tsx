@@ -131,7 +131,7 @@ function PostPage() {
           <PortableText
             content={data.body}
             serializers={{
-              link: ({ children }) => (
+              link: ({ children }: { children: string }) => (
                 <LinkPreview
                   url={children}
                   width={400}
@@ -142,12 +142,14 @@ function PostPage() {
                   }
                 />
               ),
-              youtube: ({ url }) => (
+              youtube: ({ url }: { url: string }) => (
                 <div className={classes.youtube}>
                   <ReactPlayer url={url} width="100%" height="100%" controls />
                 </div>
               ),
-              blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
+              blockquote: ({ children }: { children: string }) => (
+                <Blockquote>{children}</Blockquote>
+              ),
             }}
           />
         </Flex>

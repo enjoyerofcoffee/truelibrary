@@ -1,3 +1,4 @@
+import ComingSoon from "./pages/ComingSoon";
 import Home from "./pages/Home";
 import Library from "./pages/Library";
 import SearchLibrary from "./pages/SearchLibrary";
@@ -21,11 +22,11 @@ export const headerRoutes = [
   {
     path: "/videos",
     title: "Videos",
-    element: <div>Videos</div>,
+    element: <ComingSoon />,
   },
   {
     path: "/about",
     title: "About",
-    element: <div>About</div>,
+    element: <ComingSoon />,
   },
 ];

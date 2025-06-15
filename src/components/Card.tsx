@@ -1,10 +1,14 @@
 import { Card, Flex, Group, Popover, Text } from "@mantine/core";
 import classes from "./Card.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { PortableTextDocument } from "../types";
 import { badges } from "../utils";
 import Pill from "./Pill";
 import PortableText from "react-portable-text";
+
+type Props = {
+  children: ReactNode;
+};
 
 type CardProps = {
   title: string;
@@ -26,10 +30,18 @@ export function ArticleCard({ title, body, tags, onClick }: CardProps) {
         <PortableText
           content={body}
           serializers={{
-            h1: ({ children }) => <h1 style={{ fontSize: 16 }}>{children}</h1>,
-            h2: ({ children }) => <h2 style={{ fontSize: 14 }}>{children}</h2>,
-            h3: ({ children }) => <h3 style={{ fontSize: 12 }}>{children}</h3>,
-            h4: ({ children }) => <h4 style={{ fontSize: 10 }}>{children}</h4>,
+            h1: ({ children }: Props) => (
+              <h1 style={{ fontSize: 16 }}>{children}</h1>
+            ),
+            h2: ({ children }: Props) => (
+              <h2 style={{ fontSize: 14 }}>{children}</h2>
+            ),
+            h3: ({ children }: Props) => (
+              <h3 style={{ fontSize: 12 }}>{children}</h3>
+            ),
+            h4: ({ children }: Props) => (
+              <h4 style={{ fontSize: 10 }}>{children}</h4>
+            ),
           }}
         />
       </Text>
@@ -82,7 +94,12 @@ export function CardPills({ pills }: CardPillsProps) {
   return (
     <Flex gap={2} w={MAX_WIDTH}>
       {pills.slice(0, visibleCount).map((pill, index) => (
-        <div key={pill.title} ref={(el) => (pillRefs.current[index] = el)}>
+        <div
+          key={pill.title}
+          ref={(el) => {
+            pillRefs.current[index] = el;
+          }}
+        >
           <Pill size="xs">{pill.title}</Pill>
         </div>
       ))}

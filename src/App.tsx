@@ -11,9 +11,8 @@ import Post from "./pages/Post";
 import StudioRoute from "./pages/Studio";
 import { Header } from "./Header";
 import { FooterSocial } from "./components/Footer";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
-import SearchLibrary from "./pages/SearchLibrary";
 
 const primaryColor = "#317B42";
 const queryClient = new QueryClient();
