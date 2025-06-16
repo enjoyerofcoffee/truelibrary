@@ -3,6 +3,7 @@ import JoinUs from "./pages/JoinUs";
 import Home from "./pages/Home";
 import Library from "./pages/Library";
 import SearchLibrary from "./pages/SearchLibrary";
+import Videos from "./pages/Videos";
 
 export const headerRoutes = [
   {
@@ -23,7 +24,7 @@ export const headerRoutes = [
   {
     path: "/videos",
     title: "Videos",
-    element: <ComingSoon />,
+    element: Videos,
   },
   {
     path: "/about",
