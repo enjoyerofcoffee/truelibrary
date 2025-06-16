@@ -1,6 +1,7 @@
 import {
   Blockquote,
   Button,
+  Center,
   Container,
   Drawer,
   Flex,
@@ -171,12 +172,14 @@ function PostPage() {
                 <Blockquote>{children}</Blockquote>
               ),
               image: ({ asset }: { asset: { url: string } }) => (
-                <img
-                  src={asset.url}
-                  alt=""
-                  className={classes.image}
-                  loading="lazy"
-                />
+                <Center>
+                  <img
+                    src={asset.url}
+                    alt=""
+                    className={classes.image}
+                    loading="lazy"
+                  />
+                </Center>
               ),
             }}
           />
