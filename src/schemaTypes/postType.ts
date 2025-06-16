@@ -101,6 +101,7 @@ export const postType = defineType({
           { title: "Quran", value: "quran" },
           { title: "Salafi", value: "salafi" },
           { title: "Slavery", value: "slavery" },
+          { title: "Takfir", value: "takfir" },
           { title: "Taymiyya", value: "taymiyya" },
           { title: "Tawassul", value: "tawassul" },
           { title: "Tazkia", value: "tazkia" },

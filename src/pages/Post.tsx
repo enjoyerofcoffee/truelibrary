@@ -169,6 +169,11 @@ function PostPage() {
           <PortableText
             content={data.body}
             serializers={{
+              li: ({ children }) => (
+                <li style={{ paddingTop: 16, paddingBottom: 16 }}>
+                  {children}
+                </li>
+              ),
               link: ({ children }: { children: string }) => (
                 <a href={children} target={"_blank"}>
                   {children}

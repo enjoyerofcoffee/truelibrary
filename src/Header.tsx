@@ -30,7 +30,7 @@ export function Header() {
               />
             </Menu.Target>
             <Menu.Dropdown className={classes.burger}>
-              {[...headerRoutes].map((route, index) => (
+              {...headerRoutes.map((route, index) => (
                 <div key={`${route.title}-${index}`}>
                   <NavLink to={route.path}>
                     <Menu.Item onClick={toggle}>{route.title}</Menu.Item>

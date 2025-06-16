@@ -14,6 +14,7 @@ import { Header } from "./Header";
 import { FooterSocial } from "./components/Footer";
 import { AnimatePresence } from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
+import Library from "./pages/Library";
 
 const primaryColor = "#317B42";
 const queryClient = new QueryClient();
@@ -64,6 +65,7 @@ const Content = () => {
           {headerRoutes.map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />
           ))}
+          <Route path="/" element={Library} />
           <Route path="/studio" element={<StudioRoute />} />
           <Route path="/post" element={Home} />
           <Route path="/post/:slug" element={<Post />} />

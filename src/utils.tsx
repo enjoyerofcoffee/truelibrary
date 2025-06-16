@@ -7,6 +7,7 @@ export const badges = [
   { title: "🫂 Adab", value: "adab" },
   { title: "⛓️ Slavery", value: "slavery" },
   { title: "📿 Tawassul", value: "tawassul" },
+  { title: "❌ Takfir", value: "takfir" },
   { title: "☝️ Aqeeda", value: "aqeeda" },
   // { title: "🌙 Islambackup", value: "islambackup" },
   { title: "🛡️ Defense", value: "defense" },

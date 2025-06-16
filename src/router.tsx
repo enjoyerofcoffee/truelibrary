@@ -1,16 +1,14 @@
-import ComingSoon from "./pages/ComingSoon";
 import JoinUs from "./pages/JoinUs";
-import Home from "./pages/Home";
 import Library from "./pages/Library";
 import SearchLibrary from "./pages/SearchLibrary";
 import Videos from "./pages/Videos";
 
 export const headerRoutes = [
-  {
-    path: "/",
-    title: "Home",
-    element: Home,
-  },
+  // {
+  //   path: "/",
+  //   title: "Home",
+  //   element: Home,
+  // },
   {
     path: "/library",
     title: "Library",
@@ -26,11 +24,11 @@ export const headerRoutes = [
     title: "Videos",
     element: Videos,
   },
-  {
-    path: "/about",
-    title: "About",
-    element: <ComingSoon />,
-  },
+  // {
+  //   path: "/about",
+  //   title: "About",
+  //   element: <ComingSoon />,
+  // },
   {
     path: "/join",
     title: "Join",
