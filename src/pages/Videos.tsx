@@ -1,4 +1,4 @@
-import { Center, Container, Flex, Group } from "@mantine/core";
+import { Container, Flex } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import PageTransition from "../animations/PageTransition";
 import ReactPlayer from "react-player";

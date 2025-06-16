@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Blockquote,
   Button,
   Center,
@@ -23,6 +24,10 @@ import classes from "./Post.module.css";
 import { useDisclosure } from "@mantine/hooks";
 import NoArticleFound from "./NoArticleFound";
 import Bismillah from "../assets/Bismillah_Calligraphy.svg";
+import {
+  authorAvatarMap,
+  type AvatarMapper,
+} from "../assets/authorAvatars/mapper";
 
 const fetchPost = async (slug: string) => {
   const query = `*[_type == "post" && slug.current == $slug][0] {
@@ -111,7 +116,13 @@ function PostPage() {
               <Text size="sm" ml={4} mt="sm" my="sm" c="dimmed">
                 Author
               </Text>
-              <Text ml={4}>{data.author}</Text>
+              <Flex align={"center"} gap={4}>
+                <Avatar
+                  src={authorAvatarMap[data.author as keyof AvatarMapper]}
+                  alt=""
+                />
+                <Text ml={4}>{data.author}</Text>
+              </Flex>
             </Stack>
             {!isMobile && tableOfContents}
           </Stack>
