@@ -23,26 +23,48 @@ import PageTransition from "../animations/PageTransition";
 
 const fetchNewPosts = async () => {
   const query = `*[_type == "post"] {
-  _id,
-  title,
-  slug,
-  image {
-    asset->{
-      url
-    }
-  },
-  body[]{
-    ...,
-    asset->{
-      _id,
-      url
-    }
-  },
-  tags,
-  publishedAt
-}`;
+    _id,
+    title,
+    slug,
+    image {
+      asset->{
+        url
+      }
+    },
+    body[]{
+      ...,
+      asset->{
+        _id,
+        url
+      }
+    },
+    tags,
+    publishedAt
+  }`;
   const posts = await sanityClient.fetch(query);
   return posts;
+};
+
+// Extract plain text from Portable Text body blocks
+const extractTextFromBody = (body: any[]): string => {
+  return (
+    body
+      ?.filter(
+        (block) => block._type === "block" && Array.isArray(block.children)
+      )
+      .map((block) => block.children.map((child: any) => child.text).join(" "))
+      .join(" ") || ""
+  );
+};
+
+// Whole word matching using regex with word boundaries
+const matchesWholeWord = (text: string, search: string): boolean => {
+  try {
+    const regex = new RegExp(`\\b${search}\\b`, "i");
+    return regex.test(text);
+  } catch {
+    return false;
+  }
 };
 
 function Library() {
@@ -64,8 +86,11 @@ function Library() {
       ? post.tags.some((tag: string) => selected.includes(tag))
       : true;
 
+    const bodyText = extractTextFromBody(post.body);
+
     const matchesSearch = search
-      ? post.title.toLowerCase().includes(search.toLowerCase())
+      ? matchesWholeWord(post.title, search) ||
+        matchesWholeWord(bodyText, search)
       : true;
 
     return matchesTags && matchesSearch;
@@ -134,6 +159,14 @@ function Library() {
             </Grid.Col>
           ))}
         </Grid>
+
+        {data &&
+          filteredPosts?.length === 0 &&
+          (search || selected.length > 0) && (
+            <Text ta="center" mt="xl" c="dimmed" fw={500}>
+              No results found.
+            </Text>
+          )}
       </Container>
     </>
   );
