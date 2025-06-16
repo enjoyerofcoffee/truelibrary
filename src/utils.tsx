@@ -19,4 +19,5 @@ export const badges = [
   { title: "🗣️ Debate", value: "debate" },
   { title: "🏴 Salafi", value: "salafi" },
   { title: "🙏 Tazkia", value: "tazkia" },
+  { title: "🪶 Taymiyya", value: "taymiyya" },
 ];

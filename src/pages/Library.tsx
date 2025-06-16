@@ -88,12 +88,14 @@ function Library() {
 
     const bodyText = extractTextFromBody(post.body);
 
+    const looselyMatch = post.title.toLocaleLowerCase().includes(search);
+
     const matchesSearch = search
-      ? matchesWholeWord(post.title, search) ||
-        matchesWholeWord(bodyText, search)
+      ? matchesWholeWord(post.title.toLowerCase(), search.toLowerCase()) ||
+        matchesWholeWord(bodyText.toLowerCase(), search.toLowerCase())
       : true;
 
-    return matchesTags && matchesSearch;
+    return matchesTags && matchesSearch && looselyMatch;
   });
 
   return (
