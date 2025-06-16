@@ -33,6 +33,6 @@ export const headerRoutes = [
   {
     path: "/join",
     title: "Join",
-    element: <JoinUs />,
+    element: JoinUs,
   },
 ];

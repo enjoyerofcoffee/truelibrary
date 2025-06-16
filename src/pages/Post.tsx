@@ -21,6 +21,7 @@ import { badges } from "../utils";
 import classes from "./Post.module.css";
 import { useDisclosure } from "@mantine/hooks";
 import NoArticleFound from "./NoArticleFound";
+import Bismillah from "../assets/Bismillah_Calligraphy.svg";
 
 const fetchPost = async (slug: string) => {
   const query = `*[_type == "post" && slug.current == $slug][0] {
@@ -151,7 +152,7 @@ function PostPage() {
               </Drawer>
             </>
           )}
-
+          <img height={48} src={Bismillah} />
           <h1>{data.title}</h1>
           <PortableText
             content={data.body}

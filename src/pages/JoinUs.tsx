@@ -6,8 +6,9 @@ import {
 } from "@tabler/icons-react";
 import classes from "./JoinUs.module.css";
 import { Link } from "react-router";
+import PageTransition from "../animations/PageTransition";
 
-export default function JoinUs() {
+function JoinUs() {
   return (
     <Container size="md" py="xl">
       <Center w="100%" pb={240}>
@@ -73,3 +74,5 @@ export default function JoinUs() {
     </Container>
   );
 }
+
+export default PageTransition(JoinUs);
