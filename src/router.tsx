@@ -1,5 +1,5 @@
 import ComingSoon from "./pages/ComingSoon";
-import ContactUs from "./pages/ContactUs";
+import JoinUs from "./pages/JoinUs";
 import Home from "./pages/Home";
 import Library from "./pages/Library";
 import SearchLibrary from "./pages/SearchLibrary";
@@ -31,8 +31,8 @@ export const headerRoutes = [
     element: <ComingSoon />,
   },
   {
-    path: "/contact",
-    title: "Contact",
-    element: <ContactUs />,
+    path: "/join",
+    title: "Join",
+    element: <JoinUs />,
   },
 ];
