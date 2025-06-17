@@ -1,6 +1,9 @@
 .card {
   background-color: var(--mantine-color-body);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   @mixin hover {
     transform: scale(1.01);

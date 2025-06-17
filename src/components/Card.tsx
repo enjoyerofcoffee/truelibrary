@@ -26,7 +26,7 @@ export function ArticleCard({ title, body, tags, onClick }: CardProps) {
       onClick={onClick}
     >
       <Text className={classes.title}>{title}</Text>
-      <Text fz="sm" c="dimmed" lineClamp={6}>
+      <Text fz="sm" mb="lg" c="dimmed" lineClamp={6}>
         <PortableText
           content={body}
           serializers={{
@@ -45,7 +45,7 @@ export function ArticleCard({ title, body, tags, onClick }: CardProps) {
           }}
         />
       </Text>
-      <Card.Section className={classes.footer}>
+      <Card.Section className={classes.footer} style={{ marginTop: "auto" }}>
         <Group gap={4}>
           <CardPills pills={badges.filter((b) => tags?.includes(b.value))} />
         </Group>

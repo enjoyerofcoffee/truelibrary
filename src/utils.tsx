@@ -21,4 +21,5 @@ export const badges = [
   { title: "🏴 Salafi", value: "salafi" },
   { title: "🙏 Tazkia", value: "tazkia" },
   { title: "🪶 Taymiyya", value: "taymiyya" },
+  { title: "📜 Refutation", value: "refutation" },
 ];

@@ -29,6 +29,28 @@ function Videos() {
         </Carousel>
       </Flex>
       <Flex direction={"column"}>
+        <h1>Atheist refutations</h1>
+        <Carousel withIndicators height={550}>
+          <Carousel.Slide>
+            <div
+              style={{
+                borderRadius: 4,
+                backgroundColor: "black",
+                height: 550,
+                padding: 16,
+              }}
+            >
+              <ReactPlayer
+                url={"https://m.youtube.com/watch?v=EiolHD-lfHM"}
+                width="100%"
+                height="100%"
+                controls
+              />
+            </div>
+          </Carousel.Slide>
+        </Carousel>
+      </Flex>
+      <Flex direction={"column"}>
         <h1>Scholarly Commentary</h1>
         <Carousel withIndicators height={550}>
           <Carousel.Slide>
