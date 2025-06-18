@@ -1985,6 +1985,14 @@
     "@portabletext/toolkit" "^2.0.17"
     "@portabletext/types" "^2.0.13"
 
+"@portabletext/react@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.npmjs.org/@portabletext/react/-/react-3.2.1.tgz#9fc19c9bfef3b2c2e6b71628e7879d1f343446cf"
+  integrity sha512-RyFLk6u2q6ZyABTdOk+xoNR2Tq/4fcQFEWayNk4Kbd3gHpUUTabqOrDMChcmG6C7YVLSpwIEBwHoBVcy4vK/hA==
+  dependencies:
+    "@portabletext/toolkit" "^2.0.17"
+    "@portabletext/types" "^2.0.13"
+
 "@portabletext/to-html@^2.0.14":
   version "2.0.14"
   resolved "https://registry.yarnpkg.com/@portabletext/to-html/-/to-html-2.0.14.tgz#bad038e5ab0e0d1027f9c123547491b324d15727"

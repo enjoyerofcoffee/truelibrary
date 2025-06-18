@@ -14,7 +14,7 @@ import {
 import { useMediaQuery } from "@mantine/hooks";
 import { sanityClient } from "../client";
 import { useQuery } from "@tanstack/react-query";
-import PortableText from "react-portable-text";
+import { PortableText } from "@portabletext/react";
 import { useParams } from "react-router";
 import ReactPlayer from "react-player";
 import Pill from "../components/Pill";
@@ -167,34 +167,50 @@ function PostPage() {
           <img height={48} src={Bismillah} />
           <h1>{data.title}</h1>
           <PortableText
-            content={data.body}
-            serializers={{
-              li: ({ children }) => (
-                <li className={classes.list}>{children}</li>
-              ),
-              link: ({ children }: { children: string }) => (
-                <a href={children} target={"_blank"}>
-                  {children}
-                </a>
-              ),
-              youtube: ({ url }: { url: string }) => (
-                <div className={classes.youtube}>
-                  <ReactPlayer url={url} width="100%" height="100%" controls />
-                </div>
-              ),
-              blockquote: ({ children }: { children: string }) => (
-                <Blockquote>{children}</Blockquote>
-              ),
-              image: ({ asset }: { asset: { url: string } }) => (
-                <Center>
-                  <img
-                    src={asset.url}
-                    alt=""
-                    className={classes.image}
-                    loading="lazy"
-                  />
-                </Center>
-              ),
+            value={data.body}
+            components={{
+              listItem: {
+                number: ({ children }) => (
+                  <li className={classes.list}>{children}</li>
+                ),
+                bullet: ({ children }) => (
+                  <li className={classes.list}>{children}</li>
+                ),
+              },
+              marks: {
+                link: ({ children, value }) => (
+                  <a href={value.href} target={"_blank"}>
+                    {children}
+                  </a>
+                ),
+              },
+              types: {
+                youtube: ({ value }) => (
+                  <div className={classes.youtube}>
+                    <ReactPlayer
+                      url={value.url}
+                      width="100%"
+                      height="100%"
+                      controls
+                    />
+                  </div>
+                ),
+                image: ({ value }) => (
+                  <Center>
+                    <img
+                      src={value.asset.url}
+                      alt=""
+                      className={classes.image}
+                      loading="lazy"
+                    />
+                  </Center>
+                ),
+              },
+              block: {
+                blockquote: ({ children }) => (
+                  <Blockquote>{children}</Blockquote>
+                ),
+              },
             }}
           />
         </Flex>
