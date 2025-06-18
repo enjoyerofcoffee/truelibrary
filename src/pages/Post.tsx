@@ -176,6 +176,11 @@ function PostPage() {
                 bullet: ({ children }) => (
                   <li className={classes.list}>{children}</li>
                 ),
+                link: ({ children, value }) => (
+                  <a href={value.href} target={"_blank"}>
+                    {children}
+                  </a>
+                ),
               },
               marks: {
                 link: ({ children, value }) => (
