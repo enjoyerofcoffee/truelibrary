@@ -28,6 +28,7 @@ import {
   authorAvatarMap,
   type AvatarMapper,
 } from "../assets/authorAvatars/mapper";
+import { Carousel } from "@mantine/carousel";
 
 const fetchPost = async (slug: string) => {
   const query = `*[_type == "post" && slug.current == $slug][0] {
@@ -41,15 +42,29 @@ const fetchPost = async (slug: string) => {
   },
   body[]{
     ...,
-    asset->{
-      _id,
-      url
+    _type == "carousel" => {
+      _type,
+      slides[] {
+        asset->{
+          _id,
+          url
+        }
+      }
+    },
+    _type == "image" => {
+      _type,
+      asset->{
+        _id,
+        url
+      },
+      alt
     }
   },
   tags,
   author,
   publishedAt
 }`;
+
   const params = { slug };
   const post = await sanityClient.fetch(query, params);
   return post;
@@ -200,6 +215,18 @@ function PostPage() {
                     />
                   </div>
                 ),
+                carousel: ({ value }) => {
+                  console.log(value.slides);
+                  return (
+                    <Carousel className={classes.carousel}>
+                      {value.slides.map((slide) => (
+                        <Carousel.Slide>
+                          <img src={slide.asset.url} />
+                        </Carousel.Slide>
+                      ))}
+                    </Carousel>
+                  );
+                },
                 image: ({ value }) => (
                   <Center>
                     <img

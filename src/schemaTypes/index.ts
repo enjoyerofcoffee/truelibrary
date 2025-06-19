@@ -1,3 +1,15 @@
-import { fileAttachment, postType, tiktok, youtube } from "./postType";
+import {
+  fileAttachment,
+  imageSlide,
+  postType,
+  tiktok,
+  youtube,
+} from "./postType";
 
-export const schemaTypes = [postType, youtube, tiktok, fileAttachment];
+export const schemaTypes = [
+  postType,
+  youtube,
+  tiktok,
+  fileAttachment,
+  imageSlide,
+];
