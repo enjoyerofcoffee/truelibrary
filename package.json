@@ -48,6 +48,7 @@
     "react-router": "^7.6.2",
     "recharts": "2",
     "sanity": "^3.92.0",
+    "sanity-plugin-media": "^3.0.3",
     "stopword": "^3.1.5",
     "styled-components": "^6.1.18"
   },

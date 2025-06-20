@@ -1,3 +1,4 @@
+import { findsOutType } from "./findsOutType";
 import {
   fileAttachment,
   imageSlide,
@@ -12,4 +13,5 @@ export const schemaTypes = [
   tiktok,
   fileAttachment,
   imageSlide,
+  findsOutType,
 ];
