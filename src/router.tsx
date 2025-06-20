@@ -1,3 +1,4 @@
+// import IsraelFindsOut from "./pages/IsraelFindsOut";
 import JoinUs from "./pages/JoinUs";
 import Library from "./pages/Library";
 import SearchLibrary from "./pages/SearchLibrary";
@@ -24,6 +25,11 @@ export const headerRoutes = [
     title: "Videos",
     element: Videos,
   },
+  // {
+  //   path: "/israel-finds-out",
+  //   title: "Israel Finds Out",
+  //   element: IsraelFindsOut,
+  // },
   // {
   //   path: "/about",
   //   title: "About",

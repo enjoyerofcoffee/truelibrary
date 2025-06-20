@@ -42,6 +42,18 @@ export function ArticleCard({ title, body, tags, onClick }: CardProps) {
             h4: ({ children }: Props) => (
               <h4 style={{ fontSize: 10 }}>{children}</h4>
             ),
+            image: ({ asset, alt }) => (
+              <img
+                src={asset?.url}
+                alt={alt || "Image"}
+                style={{
+                  marginTop: 16,
+                  maxWidth: "100%",
+                  height: "auto",
+                  borderRadius: "8px",
+                }}
+              />
+            ),
           }}
         />
       </Text>

@@ -22,4 +22,7 @@ export const badges = [
   { title: "🙏 Tazkia", value: "tazkia" },
   { title: "🪶 Taymiyya", value: "taymiyya" },
   { title: "📜 Refutation", value: "refutation" },
+  { title: "⭐️ Taweel", value: "taweel" },
+  { title: "🫶 Scholars", value: "scholars" },
+  { title: "✍️ Narrations", value: "narrations" },
 ];
