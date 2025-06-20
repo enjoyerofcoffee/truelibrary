@@ -1,13 +1,14 @@
 import { Burger, Button, Flex, Group, Menu } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { useClickOutside, useDisclosure } from "@mantine/hooks";
 import classes from "./Header.module.css";
 import TrueIslamLibraryIcon from "./assets/trueislam.webp";
 import { headerRoutes } from "./router";
 import { NavLink, useNavigate } from "react-router";
 
 export function Header() {
-  const [opened, { toggle }] = useDisclosure(false);
+  const [opened, { toggle, close }] = useDisclosure(false);
   const navigate = useNavigate();
+  const ref = useClickOutside(() => close());
 
   const items = headerRoutes.map((route) => (
     <NavLink key={route.title} to={route.path} className={classes.link}>
@@ -22,6 +23,7 @@ export function Header() {
           <Menu opened={opened} shadow="md" width={200}>
             <Menu.Target>
               <Burger
+                ref={ref}
                 mr={8}
                 opened={opened}
                 onClick={toggle}
