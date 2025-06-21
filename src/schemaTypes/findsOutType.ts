@@ -1,4 +1,4 @@
-import { defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export const findsOutType = defineType({
   name: "findsOut",
@@ -25,5 +25,10 @@ export const findsOutType = defineType({
         },
       ],
     },
+    defineField({
+      name: "postId",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
   ],
 });
