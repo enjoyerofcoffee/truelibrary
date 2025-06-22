@@ -16,6 +16,8 @@ export function Header() {
     </NavLink>
   ));
 
+  console.log(opened);
+
   return (
     <header className={classes.header}>
       <div className={classes.inner}>
@@ -35,7 +37,7 @@ export function Header() {
               {...headerRoutes.map((route, index) => (
                 <div key={`${route.title}-${index}`}>
                   <NavLink to={route.path}>
-                    <Menu.Item onClick={toggle}>{route.title}</Menu.Item>
+                    <Menu.Item onClick={close}>{route.title}</Menu.Item>
                   </NavLink>
                 </div>
               ))}
