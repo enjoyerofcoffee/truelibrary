@@ -5,6 +5,7 @@ import type { PortableTextDocument } from "../types";
 import { badges } from "../utils";
 import Pill from "./Pill";
 import PortableText from "react-portable-text";
+import { Carousel } from "@mantine/carousel";
 
 type Props = {
   children: ReactNode;
@@ -42,18 +43,26 @@ export function ArticleCard({ title, body, tags, onClick }: CardProps) {
             h4: ({ children }: Props) => (
               <h4 style={{ fontSize: 10 }}>{children}</h4>
             ),
-            image: ({ asset, alt }) => (
-              <img
-                src={asset?.url}
-                alt={alt || "Image"}
-                style={{
-                  marginTop: 16,
-                  maxWidth: "100%",
-                  height: "auto",
-                  borderRadius: "8px",
-                }}
-              />
+            carousel: ({ slides }) => (
+              <img className={classes.card__img} src={slides[0].asset.url} />
             ),
+            image: ({ asset, alt }) => {
+              if (body.length !== 1 && body.find((b) => b._type === "image")) {
+                return;
+              }
+              return (
+                <img
+                  src={asset?.url}
+                  alt={alt || "Image"}
+                  style={{
+                    marginTop: 16,
+                    maxWidth: "100%",
+                    height: "auto",
+                    borderRadius: "8px",
+                  }}
+                />
+              );
+            },
           }}
         />
       </Text>

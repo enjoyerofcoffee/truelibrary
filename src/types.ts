@@ -44,7 +44,7 @@ type PortableTextBlock = {
 
 type PortableTextYouTube = {
   _key: string;
-  _type: "youtube";
+  _type: "youtube" | "image";
   url: string;
 };
 

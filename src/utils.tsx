@@ -20,6 +20,7 @@ export const badges = [
   { title: "🗣️ Debate", value: "debate" },
   { title: "🏴 Salafi", value: "salafi" },
   { title: "🙏 Tazkia", value: "tazkia" },
+  { title: "☀️ Tafwid al-Ma'na", value: "tafwidalmana" },
   { title: "🪶 Taymiyya", value: "taymiyya" },
   { title: "📜 Refutation", value: "refutation" },
   { title: "⭐️ Taweel", value: "taweel" },

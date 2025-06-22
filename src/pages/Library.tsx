@@ -36,7 +36,16 @@ const fetchNewPosts = async () => {
       asset->{
         _id,
         url
+      },
+    _type == "carousel" => {
+      _type,
+      slides[] {
+        asset->{
+          _id,
+          url
+        }
       }
+    },
     },
     tags,
     publishedAt
