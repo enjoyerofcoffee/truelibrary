@@ -25,19 +25,31 @@ import MuftiMenk from "../assets/scholars/menk.jpg";
 const englishScholars = [
   {
     avatar: DrMustafaKhattab,
-    name: "Dr Mustafa Khattab",
+    name: (
+      <a href="https://www.youtube.com/user/mustafakhattab" target="_target">
+        Dr Mustafa Khattab
+      </a>
+    ),
     description:
       "A prominent Canadian–Egyptian Muslim scholar, translator, and imam best known for The Clear Quran®, a modern and highly readable English translation of the Qur’an .",
   },
   {
     avatar: ShaykhSulayamanVanAel,
-    name: "Sheikh Sulayaman van Ael",
+    name: (
+      <a href="https://www.youtube.com/@drsulaymanvanael" target="_target">
+        Sheikh Sulayaman Van Ael
+      </a>
+    ),
     description:
       "Belgian-born convert and UK-based scholar. He memorised the Qur’an in Sudan, holds ijāzahs in recitation and hadith, and degrees in theology and mental care. He teaches at Cambridge Muslim College and serves as chaplain at UK universities.",
   },
   {
     avatar: ShamsTameez,
-    name: "Shams Tameez",
+    name: (
+      <a href="https://x.com/ShamsTameez" target="_target">
+        Shams Tameez
+      </a>
+    ),
     description:
       "Instructor at Khairabadi Institute, UK Jamia al-Karam graduate, Cambridge Muslim College alumnus, former Aylesbury Mosque imam, now pursuing further studies at Abu Hanifa Institute in Istanbul.",
   },
