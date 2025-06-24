@@ -21,272 +21,150 @@ import SchAhmedAlsharif from "../assets/scholars/SchAhmedAlsharif.jpg";
 import AdnanIbrahim from "../assets/scholars/AdnanIbrahim.jpg";
 import ShaykhSulayamanVanAel from "../assets/scholars/ShaykhSulayamanVanAel.png";
 import MuftiMenk from "../assets/scholars/menk.jpg";
+import classes from "./Scholar.module.css";
+import { Link } from "react-router";
 
 const englishScholars = [
   {
     avatar: DrMustafaKhattab,
-    name: (
-      <a href="https://www.youtube.com/user/mustafakhattab" target="_target">
-        Dr Mustafa Khattab
-      </a>
-    ),
+    name: "Dr Mustafa Khattab",
+    link: "https://www.youtube.com/user/mustafakhattab",
     description:
-      "A prominent Canadian–Egyptian Muslim scholar, translator, and imam best known for The Clear Quran®, a modern and highly readable English translation of the Qur’an .",
+      "A prominent Canadian–Egyptian Muslim scholar, translator, and imam best known for The Clear Quran®, a modern and highly readable English translation of the Qur’an.",
   },
   {
     avatar: Atabek,
-    name: (
-      <a href="https://m.youtube.com/@Nazam44" target="_blank">
-        Shaykh Atabek Shukurov
-      </a>
-    ),
-    description: (
-      <div>
-        An Uzbek-born, UK-based Islamic scholar and Māturīdī theologian. Trained
-        in Uzbekistan, Damascus, and Al-Azhar, he founded Afiya Institute and
-        Avicenna Academy, teaching traditional Islamic sciences and addressing
-        contemporary issues.
-      </div>
-    ),
+    name: "Shaykh Atabek Shukurov",
+    link: "https://m.youtube.com/@Nazam44",
+    description:
+      "An Uzbek-born, UK-based Islamic scholar and Māturīdī theologian. Trained in Uzbekistan, Damascus, and Al-Azhar, he founded Afiya Institute and Avicenna Academy, teaching traditional Islamic sciences and addressing contemporary issues.",
   },
   {
     avatar: AHM,
-    name: (
-      <a href="https://m.youtube.com/@CambridgeMuslimCollege" target="_blank">
-        Abdul Hakim Murad
-      </a>
-    ),
-    description: (
-      <div>
-        Abdul Hakim Murad is a British Muslim scholar, theologian, and Dean of
-        Cambridge Muslim College. A convert to Islam, he’s known for promoting
-        traditional Sunni thought, translating classical works, and founding the
-        Cambridge Central Mosque.{" "}
-      </div>
-    ),
+    name: "Abdul Hakim Murad",
+    link: "https://m.youtube.com/@CambridgeMuslimCollege",
+    description:
+      "Abdul Hakim Murad is a British Muslim scholar, theologian, and Dean of Cambridge Muslim College. A convert to Islam, he’s known for promoting traditional Sunni thought, translating classical works, and founding the Cambridge Central Mosque.",
   },
   {
     avatar: ShaykhSulayamanVanAel,
-    name: (
-      <a href="https://www.youtube.com/@drsulaymanvanael" target="_target">
-        Sheikh Sulayaman Van Ael
-      </a>
-    ),
+    name: "Sheikh Sulayaman Van Ael",
+    link: "https://www.youtube.com/@drsulaymanvanael",
     description:
       "Belgian-born convert and UK-based scholar. He memorised the Qur’an in Sudan, holds ijāzahs in recitation and hadith, and degrees in theology and mental care. He teaches at Cambridge Muslim College and serves as chaplain at UK universities.",
   },
   {
     avatar: ShamsTameez,
-    name: (
-      <a href="https://x.com/ShamsTameez" target="_target">
-        Shams Tameez
-      </a>
-    ),
+    name: "Shams Tameez",
+    link: "https://x.com/ShamsTameez",
     description:
       "Instructor at Khairabadi Institute, UK Jamia al-Karam graduate, Cambridge Muslim College alumnus, former Aylesbury Mosque imam, now pursuing further studies at Abu Hanifa Institute in Istanbul.",
   },
-
   {
     avatar: HamzaYusuf,
-    name: (
-      <a href="https://m.youtube.com/@SandalaMediaCenter" target="_blank">
-        Hamza Yusuf
-      </a>
-    ),
-    description: (
-      <div>
-        Shaykh Hamza Yusuf is an American Islamic scholar and co-founder of
-        Zaytuna College. A convert to Islam, he’s known for promoting classical
-        Sunni thought, translating key texts, and advancing Islamic education in
-        the West.
-      </div>
-    ),
+    name: "Hamza Yusuf",
+    link: "https://m.youtube.com/@SandalaMediaCenter",
+    description:
+      "Shaykh Hamza Yusuf is an American Islamic scholar and co-founder of Zaytuna College. A convert to Islam, he’s known for promoting classical Sunni thought, translating key texts, and advancing Islamic education in the West.",
   },
-
   {
     avatar: Arshad,
-    name: (
-      <a
-        href="https://www.youtube.com/@AsrarRashidOfficial?app=desktop"
-        target="_blank"
-      >
-        Shaykh Asrar Rashid
-      </a>
-    ),
-    description: (
-      <div>
-        Shaykh Asrar Rashid is a British-Pakistani Sunni scholar based in
-        Birmingham, trained in Damascus and the UK. He teaches fiqh, kalām, and
-        eschatology, and is known for public debates and books on theology and
-        atheism.
-      </div>
-    ),
+    name: "Shaykh Asrar Rashid",
+    link: "https://www.youtube.com/@AsrarRashidOfficial?app=desktop",
+    description:
+      "Shaykh Asrar Rashid is a British-Pakistani Sunni scholar based in Birmingham, trained in Damascus and the UK. He teaches fiqh, kalām, and eschatology, and is known for public debates and books on theology and atheism.",
   },
   {
     avatar: ShaykhMuhammadYasirAlHanafi,
-    name: (
-      <a href="https://m.youtube.com/@hanafifiqh" target="_blank">
-        Shaykh Muhammad Yasir Al‑Hanafi
-      </a>
-    ),
-    description: (
-      <div>
-        is a UK-based Islamic scholar and Imam in Aylesbury, combining
-        traditional Alim training with academic studies in philosophy (BA & MA)
-        and a PhD in kalām. A graduate of the Islamic Institute of Dewsbury, he
-        now teaches creed, fiqh, and philosophy, bridging classical Islamic
-        sciences with modern intellectual thought.
-      </div>
-    ),
+    name: "Shaykh Muhammad Yasir Al‑Hanafi",
+    link: "https://m.youtube.com/@hanafifiqh",
+    description:
+      "UK-based Islamic scholar and Imam in Aylesbury, combining traditional Alim training with academic studies in philosophy (BA & MA) and a PhD in kalām. A graduate of the Islamic Institute of Dewsbury, he now teaches creed, fiqh, and philosophy, bridging classical Islamic sciences with modern intellectual thought.",
   },
   {
     avatar: ShaykhHatim,
-    name: (
-      <a href="https://m.youtube.com/@bayyinah" target="_blank">
-        Shaykh Hatim al-Awni
-      </a>
-    ),
-    description: (
-      <div>
-        Shaykh Hatim al-Awni is a Saudi Hanbali scholar, hadith expert, and
-        professor at Umm al-Qura University. A former member of Saudi Arabia’s
-        Shura Council, he is known for his reformist critique of Wahhabism,
-        emphasis on limiting takfīr, promoting intra-Sunni unity, and opposing
-        extremism.
-      </div>
-    ),
+    name: "Shaykh Hatim al-Awni",
+    link: "https://m.youtube.com/@bayyinah",
+    description:
+      "Shaykh Hatim al-Awni is a Saudi Hanbali scholar, hadith expert, and professor at Umm al-Qura University. A former member of Saudi Arabia’s Shura Council, he is known for his reformist critique of Wahhabism, emphasis on limiting takfīr, promoting intra-Sunni unity, and opposing extremism.",
   },
   {
     avatar: MuftiMenk,
-    name: (
-      <a href="https://m.youtube.com/@muftimenkofficial" target="_blank">
-        Mufti Menk
-      </a>
-    ),
-    description: (
-      <div>
-        Mufti Menk is the Grand Mufti of Zimbabwe and a popular global Islamic
-        speaker, known for accessible, motivational talks on faith, compassion,
-        and daily life.
-      </div>
-    ),
+    name: "Mufti Menk",
+    link: "https://m.youtube.com/@muftimenkofficial",
+    description:
+      "Mufti Menk is the Grand Mufti of Zimbabwe and a popular global Islamic speaker, known for accessible, motivational talks on faith, compassion, and daily life.",
   },
   {
     avatar: NoumanAliKhan,
-    name: (
-      <a href="https://m.youtube.com/@bayyinah" target="_blank">
-        Nouman Ali Khan
-      </a>
-    ),
-    description: (
-      <div>
-        Nouman Ali Khan is founder of Bayyinah Institute, known for teaching
-        Qur’anic Arabic and tafsīr.
-      </div>
-    ),
+    name: "Nouman Ali Khan",
+    link: "https://m.youtube.com/@bayyinah",
+    description:
+      "Nouman Ali Khan is founder of Bayyinah Institute, known for teaching Qur’anic Arabic and tafsīr.",
   },
 ];
 
 const arabicScholar = [
   {
     avatar: AdhamAlAsimi,
-    name: (
-      <a href="https://m.youtube.com/@adhmasmi2" target="_target">
-        آدهم العاسمي
-      </a>
-    ),
+    name: "آدهم العاسمي",
+    link: "https://m.youtube.com/@adhmasmi2",
     description: "Best lecture series by far on all subjects",
   },
   {
     avatar: DrHamzaelBekri,
-    name: (
-      <a
-        href="https://www.youtube.com/@dr.hamzael-bekri8642?app=desktop"
-        target="_target"
-      >
-        حمزة البكري
-      </a>
-    ),
+    name: "حمزة البكري",
+    link: "https://www.youtube.com/@dr.hamzael-bekri8642?app=desktop",
     description: "Arguably the smartest scholar alive right now",
   },
   {
     avatar: ShSaedFoudeh,
-    name: (
-      <a href="https://m.youtube.com/@Saeedfodeh" target="_target">
-        سعيد فوده
-      </a>
-    ),
+    name: "سعيد فوده",
+    link: "https://m.youtube.com/@Saeedfodeh",
     description:
       "Leading Ashʿarī theologian and critic of Salafī-Wahhābī thought.",
   },
   {
     avatar: Bouti,
-    name: (
-      <a href="https://m.youtube.com/@naseemalsham1" target="_target">
-        البوطي
-      </a>
-    ),
-    description: <div>Among greatest of All time</div>,
+    name: "البوطي",
+    link: "https://m.youtube.com/@naseemalsham1",
+    description: "Among greatest of all time",
   },
   {
     avatar: WalidAtiya,
-    name: (
-      <a href="https://m.youtube.com/@الشيخ_وليد_عطية" target="_target">
-        وليد عطية
-      </a>
-    ),
+    name: "وليد عطية",
+    link: "https://m.youtube.com/@الشيخ_وليد_عطية",
     description: "Excellent Imam incredibly knowledgeable on many subjects",
   },
   {
     avatar: UstadhMunir,
-    name: (
-      <a href="https://m.youtube.com/@RisaleiNurBSN" target="_target">
-        Ustadh Munir
-      </a>
-    ),
-    description: "Focused on works of Nursi RA best for strengthening faith)",
+    name: "Ustadh Munir",
+    link: "https://m.youtube.com/@RisaleiNurBSN",
+    description: "Focused on works of Nursi RA (best for strengthening faith)",
   },
   {
     avatar: AbdulKarimAlShdeifat,
-    name: (
-      <a href="https://m.youtube.com/@ThakafahTV" target="_target">
-        عبدالكريم الشديفات
-      </a>
-    ),
+    name: "عبدالكريم الشديفات",
+    link: "https://m.youtube.com/@ThakafahTV",
     description:
       "Excellent lectures especially on Aqeeda... channel is 'الثقافت TV' but he's not the only one there",
   },
   {
     avatar: AhmadAlDamanhury,
-    name: (
-      <a
-        href="https://www.youtube.com/@ahmadaldamanhury?app=desktop"
-        target="_target"
-      >
-        أحمد الدمنهوري
-      </a>
-    ),
+    name: "أحمد الدمنهوري",
+    link: "https://www.youtube.com/@ahmadaldamanhury?app=desktop",
     description: "Great Tafsir series on Aqeeda Books",
   },
   {
     avatar: SchAhmedAlsharif,
-    name: (
-      <a
-        href="https://www.youtube.com/@sch-Ahmed-Alsharif?app=desktop"
-        target="_target"
-      >
-        الشيخ عبد الكريم الشديفات
-      </a>
-    ),
+    name: "الشيخ عبد الكريم الشديفات",
+    link: "https://www.youtube.com/@sch-Ahmed-Alsharif?app=desktop",
     description: "Great series on Aqeeda Books",
   },
   {
     avatar: AdnanIbrahim,
-    name: (
-      <a href="https://m.youtube.com/@Adnan-Ibrahim" target="_target">
-        عدنان ابراهيم
-      </a>
-    ),
+    name: "عدنان ابراهيم",
+    link: "https://m.youtube.com/@Adnan-Ibrahim",
     description:
       "Islamic scholar known for his thought-provoking lectures and critical engagement with religious and scientific topics.",
   },
@@ -301,13 +179,15 @@ function Scholars() {
           <Grid>
             {englishScholars.map((scholar) => (
               <Grid.Col mt={"lg"} span={{ base: 12, sm: 6, md: 4 }}>
-                <Stack>
-                  <Avatar size={200} src={scholar.avatar} alt="it's me" />
-                  <Text>{scholar.name}</Text>
-                  <Text c="dimmed" size="sm">
-                    {scholar.description}
-                  </Text>
-                </Stack>
+                <Link to={scholar.link} style={{ color: "white" }}>
+                  <Stack className={classes.scholar__card}>
+                    <Avatar size={200} src={scholar.avatar} alt="it's me" />
+                    <Text>{scholar.name}</Text>
+                    <Text c="dimmed" size="sm">
+                      {scholar.description}
+                    </Text>
+                  </Stack>
+                </Link>
               </Grid.Col>
             ))}
           </Grid>
@@ -315,13 +195,15 @@ function Scholars() {
           <Grid>
             {arabicScholar.map((scholar) => (
               <Grid.Col mt={"lg"} span={{ base: 12, sm: 6, md: 4 }}>
-                <Stack>
-                  <Avatar size={200} src={scholar.avatar} alt="it's me" />
-                  <Text>{scholar.name}</Text>
-                  <Text c="dimmed" size="sm">
-                    {scholar.description}
-                  </Text>
-                </Stack>
+                <Link to={scholar.link} style={{ color: "white" }}>
+                  <Stack className={classes.scholar__card}>
+                    <Avatar size={200} src={scholar.avatar} alt="it's me" />
+                    <Text>{scholar.name}</Text>
+                    <Text c="dimmed" size="sm">
+                      {scholar.description}
+                    </Text>
+                  </Stack>
+                </Link>
               </Grid.Col>
             ))}
           </Grid>
