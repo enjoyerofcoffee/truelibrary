@@ -138,6 +138,23 @@ const englishScholars = [
     ),
   },
   {
+    avatar: ShaykhHatim,
+    name: (
+      <a href="https://m.youtube.com/@bayyinah" target="_blank">
+        Shaykh Hatim al-Awni
+      </a>
+    ),
+    description: (
+      <div>
+        Shaykh Hatim al-Awni is a Saudi Hanbali scholar, hadith expert, and
+        professor at Umm al-Qura University. A former member of Saudi Arabia’s
+        Shura Council, he is known for his reformist critique of Wahhabism,
+        emphasis on limiting takfīr, promoting intra-Sunni unity, and opposing
+        extremism.
+      </div>
+    ),
+  },
+  {
     avatar: MuftiMenk,
     name: (
       <a href="https://m.youtube.com/@muftimenkofficial" target="_blank">
@@ -163,23 +180,6 @@ const englishScholars = [
       <div>
         Nouman Ali Khan is founder of Bayyinah Institute, known for teaching
         Qur’anic Arabic and tafsīr.
-      </div>
-    ),
-  },
-  {
-    avatar: ShaykhHatim,
-    name: (
-      <a href="https://m.youtube.com/@bayyinah" target="_blank">
-        Shaykh Hatim al-Awni
-      </a>
-    ),
-    description: (
-      <div>
-        Shaykh Hatim al-Awni is a Saudi Hanbali scholar, hadith expert, and
-        professor at Umm al-Qura University. A former member of Saudi Arabia’s
-        Shura Council, he is known for his reformist critique of Wahhabism,
-        emphasis on limiting takfīr, promoting intra-Sunni unity, and opposing
-        extremism.
       </div>
     ),
   },
