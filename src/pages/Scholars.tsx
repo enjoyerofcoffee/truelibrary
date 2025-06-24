@@ -30,27 +30,6 @@ const englishScholars = [
       "A prominent Canadian–Egyptian Muslim scholar, translator, and imam best known for The Clear Quran®, a modern and highly readable English translation of the Qur’an .",
   },
   {
-    avatar: ShSaedFoudeh,
-    name: "Sheikh Saed Foudeh",
-    description:
-      "Sheikh Saʾīd ʿAbd al‑Latīf Foudah (سعيد فودة) is a leading Shafiʿī‑Ashʿarī scholar of Islamic theology (ʿaqīdah), kalam (scholastic theology), logic, and legal theory, based in Amman, Jordan .",
-  },
-  {
-    avatar: Bouti,
-    name: (
-      <a href="https://m.youtube.com/@naseemalsham1" target="_target">
-        Sheikh Muhammad al‑Būṭī
-      </a>
-    ),
-    description: (
-      <div>
-        Sheikh Muhammad Saʿīd Ramadan al-Būṭī (1929–2013) was a leading Syrian
-        Sunni scholar, known for defending traditional Islam and authoring
-        numerous works.
-      </div>
-    ),
-  },
-  {
     avatar: ShaykhSulayamanVanAel,
     name: "Sheikh Sulayaman van Ael",
     description:
@@ -217,6 +196,25 @@ const arabicScholar = [
     description: "Arguably the smartest scholar alive right now",
   },
   {
+    avatar: ShSaedFoudeh,
+    name: (
+      <a href="https://m.youtube.com/@Saeedfodeh" target="_target">
+        سعيد فوده
+      </a>
+    ),
+    description:
+      "Leading Ashʿarī theologian and critic of Salafī-Wahhābī thought.",
+  },
+  {
+    avatar: Bouti,
+    name: (
+      <a href="https://m.youtube.com/@naseemalsham1" target="_target">
+        البوطي
+      </a>
+    ),
+    description: <div>Among greatest of All time</div>,
+  },
+  {
     avatar: WalidAtiya,
     name: (
       <a href="https://m.youtube.com/@الشيخ_وليد_عطية" target="_target">
@@ -285,7 +283,7 @@ function Scholars() {
     <Container>
       <Center>
         <Stack>
-          <h1>English Scholars</h1>
+          <h1>English-Speaking Scholars</h1>
           <Grid>
             {englishScholars.map((scholar) => (
               <Grid.Col mt={"lg"} span={{ base: 12, sm: 6, md: 4 }}>
@@ -299,7 +297,7 @@ function Scholars() {
               </Grid.Col>
             ))}
           </Grid>
-          <h1>Arabic Scholars</h1>
+          <h1>Arabic-Speaking Scholars</h1>
           <Grid>
             {arabicScholar.map((scholar) => (
               <Grid.Col mt={"lg"} span={{ base: 12, sm: 6, md: 4 }}>
