@@ -17,6 +17,8 @@ import WalidAtiya from "../assets/scholars/WalidAtiya.jpeg";
 import UstadhMunir from "../assets/scholars/UstadhMunir.jpg";
 import AbdulKarimAlShdeifat from "../assets/scholars/AbdulKarimAlShdeifat.jpg";
 import AhmadAlDamanhury from "../assets/scholars/AhmadAlDamanhury.jpg";
+import SchAhmedAlsharif from "../assets/scholars/SchAhmedAlsharif.jpg";
+import AdnanIbrahim from "../assets/scholars/AdnanIbrahim.jpg";
 
 const englishScholars = [
   {
@@ -245,6 +247,28 @@ const arabicScholar = [
       </a>
     ),
     description: "Great Tafsir series on Aqeeda Books",
+  },
+  {
+    avatar: SchAhmedAlsharif,
+    name: (
+      <a
+        href="https://www.youtube.com/@sch-Ahmed-Alsharif?app=desktop"
+        target="_target"
+      >
+        الشيخ عبد الكريم الشديفات
+      </a>
+    ),
+    description: "Great series on Aqeeda Books",
+  },
+  {
+    avatar: AdnanIbrahim,
+    name: (
+      <a href="https://m.youtube.com/@Adnan-Ibrahim" target="_target">
+        عدنان ابراهيم
+      </a>
+    ),
+    description:
+      "Islamic scholar known for his thought-provoking lectures and critical engagement with religious and scientific topics.",
   },
 ];
 
