@@ -1,4 +1,12 @@
-import { Avatar, Center, Container, Text, Grid, Stack } from "@mantine/core";
+import {
+  Avatar,
+  Center,
+  Container,
+  Text,
+  Grid,
+  Stack,
+  Group,
+} from "@mantine/core";
 import PageTransition from "../animations/PageTransition";
 import DrMustafaKhattab from "../assets/scholars/DrMustafaKhattab.jpg";
 import ShSaedFoudeh from "../assets/scholars/ShSaedFoudeh.png";
@@ -175,7 +183,13 @@ function Scholars() {
     <Container>
       <Center>
         <Stack>
-          <h1>English-Speaking Scholars</h1>
+          <Group gap={0}>
+            <h1>English-Speaking Scholars</h1>
+            <Text c="dimmed">
+              We recommend you to follow these scholars below. They come from
+              traditional backgrounds and have well-rounded knowledge
+            </Text>
+          </Group>
           <Grid>
             {englishScholars.map((scholar) => (
               <Grid.Col mt={"lg"} span={{ base: 12, sm: 6, md: 4 }}>
