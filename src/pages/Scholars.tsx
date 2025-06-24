@@ -19,6 +19,8 @@ import AbdulKarimAlShdeifat from "../assets/scholars/AbdulKarimAlShdeifat.jpg";
 import AhmadAlDamanhury from "../assets/scholars/AhmadAlDamanhury.jpg";
 import SchAhmedAlsharif from "../assets/scholars/SchAhmedAlsharif.jpg";
 import AdnanIbrahim from "../assets/scholars/AdnanIbrahim.jpg";
+import ShaykhSulayamanVanAel from "../assets/scholars/ShaykhSulayamanVanAel.png";
+import MuftiMenk from "../assets/scholars/menk.jpg";
 
 const englishScholars = [
   {
@@ -47,6 +49,12 @@ const englishScholars = [
         numerous works.
       </div>
     ),
+  },
+  {
+    avatar: ShaykhSulayamanVanAel,
+    name: "Sheikh Sulayaman van Ael",
+    description:
+      "Belgian-born convert and UK-based scholar. He memorised the Qur’an in Sudan, holds ijāzahs in recitation and hadith, and degrees in theology and mental care. He teaches at Cambridge Muslim College and serves as chaplain at UK universities.",
   },
   {
     avatar: ShamsTameez,
@@ -139,7 +147,7 @@ const englishScholars = [
     ),
   },
   {
-    avatar: ShaykhMuhammadYasirAlHanafi,
+    avatar: MuftiMenk,
     name: (
       <a href="https://m.youtube.com/@muftimenkofficial" target="_blank">
         Mufti Menk
