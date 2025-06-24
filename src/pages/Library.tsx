@@ -54,28 +54,6 @@ const fetchNewPosts = async () => {
   return posts;
 };
 
-// Extract plain text from Portable Text body blocks
-const extractTextFromBody = (body: any[]): string => {
-  return (
-    body
-      ?.filter(
-        (block) => block._type === "block" && Array.isArray(block.children)
-      )
-      .map((block) => block.children.map((child: any) => child.text).join(" "))
-      .join(" ") || ""
-  );
-};
-
-// Whole word matching using regex with word boundaries
-const matchesWholeWord = (text: string, search: string): boolean => {
-  try {
-    const regex = new RegExp(`\\b${search}\\b`, "i");
-    return regex.test(text);
-  } catch {
-    return false;
-  }
-};
-
 function Library() {
   const navigate = useNavigate();
   const { data } = useQuery<Post[]>({
@@ -95,16 +73,21 @@ function Library() {
       ? post.tags.some((tag: string) => selected.includes(tag))
       : true;
 
-    const bodyText = extractTextFromBody(post.body);
+    const bodyText = post.body
+      .map((block: any) => {
+        if (block._type === "block" && block.children) {
+          return block.children.map((child: any) => child.text).join(" ");
+        }
+        return ""; // ignore non-block types
+      })
+      .join(" ");
 
-    const looselyMatch = post.title.toLocaleLowerCase().includes(search);
+    const combinedText = `${post.title} ${bodyText}`.toLowerCase();
+    const searchLower = search.toLowerCase();
 
-    const matchesSearch = search
-      ? matchesWholeWord(post.title.toLowerCase(), search.toLowerCase()) ||
-        matchesWholeWord(bodyText.toLowerCase(), search.toLowerCase())
-      : true;
+    const matchesSearch = search ? combinedText.includes(searchLower) : true;
 
-    return matchesTags && matchesSearch && looselyMatch;
+    return matchesTags && matchesSearch;
   });
 
   return (
@@ -166,6 +149,7 @@ function Library() {
                 body={post.body}
                 tags={post.tags}
                 onClick={() => onClickCard(post.slug.current)}
+                search={search}
               />
             </Grid.Col>
           ))}

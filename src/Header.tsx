@@ -16,8 +16,6 @@ export function Header() {
     </NavLink>
   ));
 
-  console.log(opened);
-
   return (
     <header className={classes.header}>
       <div className={classes.inner}>

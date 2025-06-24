@@ -216,7 +216,6 @@ function PostPage() {
                   </div>
                 ),
                 carousel: ({ value }) => {
-                  console.log(value.slides);
                   return (
                     <Carousel className={classes.carousel}>
                       {value.slides.map((slide) => (

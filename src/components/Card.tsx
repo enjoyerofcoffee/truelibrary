@@ -5,7 +5,6 @@ import type { PortableTextDocument } from "../types";
 import { badges } from "../utils";
 import Pill from "./Pill";
 import PortableText from "react-portable-text";
-import { Carousel } from "@mantine/carousel";
 
 type Props = {
   children: ReactNode;
@@ -15,9 +14,21 @@ type CardProps = {
   title: string;
   body: PortableTextDocument;
   tags?: string[];
+  search?: string;
   onClick?: () => void;
 };
-export function ArticleCard({ title, body, tags, onClick }: CardProps) {
+export function ArticleCard({ title, body, tags, search, onClick }: CardProps) {
+  const plainText = extractPlainText(body);
+  const sentences = splitIntoSentences(plainText);
+  const lowerSearch = search?.toLowerCase() || "";
+  const matchingSentences = sentences.filter((s) =>
+    s.toLowerCase().includes(lowerSearch)
+  );
+
+  const displayedSentences = matchingSentences
+    .slice(0, 3)
+    .map((s) => highlightText(s, search || ""));
+
   return (
     <Card
       withBorder
@@ -27,45 +38,62 @@ export function ArticleCard({ title, body, tags, onClick }: CardProps) {
       onClick={onClick}
     >
       <Text className={classes.title}>{title}</Text>
+
       <Text fz="sm" mb="lg" c="dimmed" lineClamp={6}>
-        <PortableText
-          content={body}
-          serializers={{
-            h1: ({ children }: Props) => (
-              <h1 style={{ fontSize: 16 }}>{children}</h1>
-            ),
-            h2: ({ children }: Props) => (
-              <h2 style={{ fontSize: 14 }}>{children}</h2>
-            ),
-            h3: ({ children }: Props) => (
-              <h3 style={{ fontSize: 12 }}>{children}</h3>
-            ),
-            h4: ({ children }: Props) => (
-              <h4 style={{ fontSize: 10 }}>{children}</h4>
-            ),
-            carousel: ({ slides }) => (
-              <img className={classes.card__img} src={slides[0].asset.url} />
-            ),
-            image: ({ asset, alt }) => {
-              if (body.length !== 1 && body.find((b) => b._type === "image")) {
-                return;
-              }
-              return (
+        {search ? (
+          <div style={{ marginTop: 16 }}>
+            {displayedSentences?.map((sentence, idx) => (
+              <span key={idx}>{sentence} </span>
+            ))}
+          </div>
+        ) : (
+          <PortableText
+            content={body}
+            serializers={{
+              h1: ({ children }: Props) => (
+                <h1 style={{ fontSize: 16 }}>{children}</h1>
+              ),
+              h2: ({ children }: Props) => (
+                <h2 style={{ fontSize: 14 }}>{children}</h2>
+              ),
+              h3: ({ children }: Props) => (
+                <h3 style={{ fontSize: 12 }}>{children}</h3>
+              ),
+              h4: ({ children }: Props) => (
+                <h4 style={{ fontSize: 10 }}>{children}</h4>
+              ),
+              carousel: ({ slides }) => (
                 <img
-                  src={asset?.url}
-                  alt={alt || "Image"}
-                  style={{
-                    marginTop: 16,
-                    maxWidth: "100%",
-                    height: "auto",
-                    borderRadius: "8px",
-                  }}
+                  className={classes.card__img}
+                  src={slides[0].asset.url}
+                  alt=""
                 />
-              );
-            },
-          }}
-        />
+              ),
+              image: ({ asset, alt }) => {
+                if (
+                  body.length !== 1 &&
+                  body.find((b) => b._type === "image")
+                ) {
+                  return;
+                }
+                return (
+                  <img
+                    src={asset?.url}
+                    alt={alt || "Image"}
+                    style={{
+                      marginTop: 16,
+                      maxWidth: "100%",
+                      height: "auto",
+                      borderRadius: "8px",
+                    }}
+                  />
+                );
+              },
+            }}
+          />
+        )}
       </Text>
+
       <Card.Section className={classes.footer} style={{ marginTop: "auto" }}>
         <Group gap={4}>
           <CardPills pills={badges.filter((b) => tags?.includes(b.value))} />
@@ -157,3 +185,35 @@ export function CardPills({ pills }: CardPillsProps) {
     </Flex>
   );
 }
+
+function highlightText(text: string, query: string) {
+  if (!query) return text;
+
+  const regex = new RegExp(`(${query})`, "gi");
+  const parts = text.split(regex);
+
+  return parts.map((part, i) =>
+    regex.test(part) ? (
+      <span key={i} style={{ color: "var(--highlight-color)" }}>
+        {part}
+      </span>
+    ) : (
+      part
+    )
+  );
+}
+
+const extractPlainText = (doc: PortableTextDocument): string => {
+  return doc
+    .map((block) => {
+      if (block._type === "block" && Array.isArray(block.children)) {
+        return block.children.map((child) => child.text).join("");
+      }
+      return "";
+    })
+    .join("\n");
+};
+
+const splitIntoSentences = (text: string): string[] => {
+  return text.split(/(?<=[.!?؟]|[ۚۛۗۙ])\s+|\n+/g).filter(Boolean);
+};

@@ -1,7 +1,7 @@
 // import IsraelFindsOut from "./pages/IsraelFindsOut";
 import JoinUs from "./pages/JoinUs";
 import Library from "./pages/Library";
-import SearchLibrary from "./pages/SearchLibrary";
+// import SearchLibrary from "./pages/SearchLibrary";
 import Videos from "./pages/Videos";
 
 export const headerRoutes = [
@@ -15,11 +15,11 @@ export const headerRoutes = [
     title: "Library",
     element: Library,
   },
-  {
-    path: "/search",
-    title: "Search ",
-    element: SearchLibrary,
-  },
+  // {
+  //   path: "/search",
+  //   title: "Search ",
+  //   element: SearchLibrary,
+  // },
   {
     path: "/videos",
     title: "Videos",
