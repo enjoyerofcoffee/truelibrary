@@ -34,6 +34,38 @@ const englishScholars = [
       "A prominent Canadian–Egyptian Muslim scholar, translator, and imam best known for The Clear Quran®, a modern and highly readable English translation of the Qur’an .",
   },
   {
+    avatar: Atabek,
+    name: (
+      <a href="https://m.youtube.com/@Nazam44" target="_blank">
+        Shaykh Atabek Shukurov
+      </a>
+    ),
+    description: (
+      <div>
+        An Uzbek-born, UK-based Islamic scholar and Māturīdī theologian. Trained
+        in Uzbekistan, Damascus, and Al-Azhar, he founded Afiya Institute and
+        Avicenna Academy, teaching traditional Islamic sciences and addressing
+        contemporary issues.
+      </div>
+    ),
+  },
+  {
+    avatar: AHM,
+    name: (
+      <a href="https://m.youtube.com/@CambridgeMuslimCollege" target="_blank">
+        Abdul Hakim Murad
+      </a>
+    ),
+    description: (
+      <div>
+        Abdul Hakim Murad is a British Muslim scholar, theologian, and Dean of
+        Cambridge Muslim College. A convert to Islam, he’s known for promoting
+        traditional Sunni thought, translating classical works, and founding the
+        Cambridge Central Mosque.{" "}
+      </div>
+    ),
+  },
+  {
     avatar: ShaykhSulayamanVanAel,
     name: (
       <a href="https://www.youtube.com/@drsulaymanvanael" target="_target">
@@ -53,22 +85,7 @@ const englishScholars = [
     description:
       "Instructor at Khairabadi Institute, UK Jamia al-Karam graduate, Cambridge Muslim College alumnus, former Aylesbury Mosque imam, now pursuing further studies at Abu Hanifa Institute in Istanbul.",
   },
-  {
-    avatar: AHM,
-    name: (
-      <a href="https://m.youtube.com/@CambridgeMuslimCollege" target="_blank">
-        Abdul Hakim Murad
-      </a>
-    ),
-    description: (
-      <div>
-        Abdul Hakim Murad is a British Muslim scholar, theologian, and Dean of
-        Cambridge Muslim College. A convert to Islam, he’s known for promoting
-        traditional Sunni thought, translating classical works, and founding the
-        Cambridge Central Mosque.{" "}
-      </div>
-    ),
-  },
+
   {
     avatar: HamzaYusuf,
     name: (
@@ -85,22 +102,7 @@ const englishScholars = [
       </div>
     ),
   },
-  {
-    avatar: Atabek,
-    name: (
-      <a href="https://m.youtube.com/@Nazam44" target="_blank">
-        Shaykh Atabek Shukurov
-      </a>
-    ),
-    description: (
-      <div>
-        An Uzbek-born, UK-based Islamic scholar and Māturīdī theologian. Trained
-        in Uzbekistan, Damascus, and Al-Azhar, he founded Afiya Institute and
-        Avicenna Academy, teaching traditional Islamic sciences and addressing
-        contemporary issues.
-      </div>
-    ),
-  },
+
   {
     avatar: Arshad,
     name: (
