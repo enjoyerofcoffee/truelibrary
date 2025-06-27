@@ -33,11 +33,11 @@ function Home() {
   });
 
   return (
-    <Container className={classes.container} size={"md"} py={24}>
+    <Container className={classes.container} size={"sm"}>
       <Flex align={"center"} direction={"column"}>
         <h1>True Islam Library</h1>
       </Flex>
-      <Flex pl={"sm"} direction={"column"}>
+      <Flex px={"xl"} direction={"column"}>
         {categories.map((category) => (
           <div>
             <h2>{category.title}</h2>
