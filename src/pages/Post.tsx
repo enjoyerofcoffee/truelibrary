@@ -108,145 +108,141 @@ function PostPage() {
   );
 
   return (
-    <div>
-      <Container display="flex" size="xl">
-        <Group
-          gap={12}
-          className={classes.tags__wrapper}
-          pb={12}
-          visibleFrom="md"
-        >
-          <Stack w={320}>
+    <Container display="flex" size="xl" pt={"sm"}>
+      <Group
+        gap={12}
+        className={classes.tags__wrapper}
+        pb={12}
+        visibleFrom="md"
+      >
+        <Stack w={320}>
+          <Text size="sm" ml={4} mt="sm" my="sm" c="dimmed">
+            Tags
+          </Text>
+          <Flex wrap="wrap" gap={4}>
+            {data.tags.map((tag) => (
+              <Pill key={tag} isSelectable={false}>
+                {badges.find((b) => b.value === tag)?.title}
+              </Pill>
+            ))}
+          </Flex>
+          <Stack>
             <Text size="sm" ml={4} mt="sm" my="sm" c="dimmed">
-              Tags
+              Author
             </Text>
-            <Flex wrap="wrap" gap={4}>
-              {data.tags.map((tag) => (
-                <Pill key={tag} isSelectable={false}>
-                  {badges.find((b) => b.value === tag)?.title}
-                </Pill>
-              ))}
+            <Flex align={"center"} gap={4}>
+              <Avatar
+                src={authorAvatarMap[data.author as keyof AvatarMapper]}
+                alt=""
+              />
+              <Text ml={4}>{data.author}</Text>
             </Flex>
-            <Stack>
-              <Text size="sm" ml={4} mt="sm" my="sm" c="dimmed">
-                Author
-              </Text>
-              <Flex align={"center"} gap={4}>
-                <Avatar
-                  src={authorAvatarMap[data.author as keyof AvatarMapper]}
-                  alt=""
-                />
-                <Text ml={4}>{data.author}</Text>
-              </Flex>
-            </Stack>
-            {!isMobile && tableOfContents}
           </Stack>
-        </Group>
+          {!isMobile && tableOfContents}
+        </Stack>
+      </Group>
 
-        <Flex direction="column" className={classes.content}>
-          {isMobile && (
-            <>
-              <Button onClick={openDrawer} variant="light" mb="md">
-                Table of Contents
-              </Button>
-              <Drawer
-                opened={drawerOpened}
-                onClose={closeDrawer}
-                withCloseButton={true}
-                position="right"
-                size="100%"
-                overlayProps={{ opacity: 1 }}
-                withinPortal={false}
-                styles={{
-                  content: {
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    height: "100vh",
-                    width: "100vw",
-                    maxWidth: "100vw",
-                    maxHeight: "100vh",
-                    borderRadius: 0,
-                  },
-                  body: {
-                    height: "100%",
-                    padding: "1rem",
-                    overflowY: "auto",
-                  },
-                }}
-              >
-                {tableOfContents}
-              </Drawer>
-            </>
-          )}
-          <img height={48} src={Bismillah} />
-          <h1>{data.title}</h1>
-          <PortableText
-            value={data.body}
-            components={{
-              listItem: {
-                number: ({ children }) => (
-                  <li className={classes.list}>{children}</li>
-                ),
-                bullet: ({ children }) => (
-                  <li className={classes.list}>{children}</li>
-                ),
-                link: ({ children, value }) => (
-                  <a href={value.href} target={"_blank"}>
-                    {children}
-                  </a>
-                ),
-              },
-              marks: {
-                link: ({ children, value }) => (
-                  <a href={value.href} target={"_blank"}>
-                    {children}
-                  </a>
-                ),
-              },
-              types: {
-                youtube: ({ value }) => (
-                  <div className={classes.youtube}>
-                    <ReactPlayer
-                      url={value.url}
-                      width="100%"
-                      height="100%"
-                      controls
-                    />
-                  </div>
-                ),
-                carousel: ({ value }) => {
-                  return (
-                    <Carousel className={classes.carousel}>
-                      {value.slides.map((slide) => (
-                        <Carousel.Slide>
-                          <img src={slide.asset.url} />
-                        </Carousel.Slide>
-                      ))}
-                    </Carousel>
-                  );
+      <Flex direction="column" className={classes.content}>
+        {isMobile && (
+          <>
+            <Button onClick={openDrawer} variant="light" mb="md">
+              Table of Contents
+            </Button>
+            <Drawer
+              opened={drawerOpened}
+              onClose={closeDrawer}
+              withCloseButton={true}
+              position="right"
+              size="100%"
+              overlayProps={{ opacity: 1 }}
+              withinPortal={false}
+              styles={{
+                content: {
+                  position: "fixed",
+                  top: 0,
+                  left: 0,
+                  height: "100vh",
+                  width: "100vw",
+                  maxWidth: "100vw",
+                  maxHeight: "100vh",
+                  borderRadius: 0,
                 },
-                image: ({ value }) => (
-                  <Center>
-                    <img
-                      src={value.asset.url}
-                      alt=""
-                      className={classes.image}
-                      loading="lazy"
-                    />
-                  </Center>
-                ),
+                body: {
+                  height: "100%",
+                  padding: "1rem",
+                  overflowY: "auto",
+                },
+              }}
+            >
+              {tableOfContents}
+            </Drawer>
+          </>
+        )}
+        <img height={48} src={Bismillah} />
+        <h1>{data.title}</h1>
+        <PortableText
+          value={data.body}
+          components={{
+            listItem: {
+              number: ({ children }) => (
+                <li className={classes.list}>{children}</li>
+              ),
+              bullet: ({ children }) => (
+                <li className={classes.list}>{children}</li>
+              ),
+              link: ({ children, value }) => (
+                <a href={value.href} target={"_blank"}>
+                  {children}
+                </a>
+              ),
+            },
+            marks: {
+              link: ({ children, value }) => (
+                <a href={value.href} target={"_blank"}>
+                  {children}
+                </a>
+              ),
+            },
+            types: {
+              youtube: ({ value }) => (
+                <div className={classes.youtube}>
+                  <ReactPlayer
+                    url={value.url}
+                    width="100%"
+                    height="100%"
+                    controls
+                  />
+                </div>
+              ),
+              carousel: ({ value }) => {
+                return (
+                  <Carousel className={classes.carousel}>
+                    {value.slides.map((slide) => (
+                      <Carousel.Slide>
+                        <img src={slide.asset.url} />
+                      </Carousel.Slide>
+                    ))}
+                  </Carousel>
+                );
               },
-              block: {
-                blockquote: ({ children }) => (
-                  <Blockquote>{children}</Blockquote>
-                ),
-              },
-            }}
-          />
-        </Flex>
-      </Container>
-    </div>
+              image: ({ value }) => (
+                <Center>
+                  <img
+                    src={value.asset.url}
+                    alt=""
+                    className={classes.image}
+                    loading="lazy"
+                  />
+                </Center>
+              ),
+            },
+            block: {
+              blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
+            },
+          }}
+        />
+      </Flex>
+    </Container>
   );
 }
 

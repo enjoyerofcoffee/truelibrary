@@ -56,7 +56,7 @@ function App() {
 const Content = () => {
   const location = useLocation();
   return (
-    <AppShell header={{ height: 56 }} footer={{ height: 56 }} pt="md" pb="md">
+    <AppShell header={{ height: 42 }} pt="md" pb={"md"}>
       <AppShell.Header>
         <Header />
       </AppShell.Header>
