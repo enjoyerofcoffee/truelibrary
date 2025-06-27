@@ -34,31 +34,27 @@ function Home() {
   });
 
   return (
-    <BackgroundImage src={Background} p={"sm"}>
-      <Container className={classes.container} size={"sm"}>
-        <Flex align={"center"} direction={"column"}>
-          <h1>True Islam Library</h1>
-        </Flex>
-        <Flex px={"xl"} direction={"column"}>
-          {categories.map((category) => (
-            <div>
-              <h2>{category.title}</h2>
-              <ul>
-                {data
-                  ?.filter((post) => post.category === category.value)
-                  .map((post) => (
-                    <li style={{ paddingBottom: 4 }}>
-                      <Link to={`/post/${post.slug.current}`}>
-                        {post.title}
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          ))}
-        </Flex>
-      </Container>
-    </BackgroundImage>
+    <Container className={classes.container} size={"sm"}>
+      <Flex align={"center"} direction={"column"}>
+        <h1>True Islam Library</h1>
+      </Flex>
+      <Flex px={"xl"} direction={"column"}>
+        {categories.map((category) => (
+          <div>
+            <h2>{category.title}</h2>
+            <ul>
+              {data
+                ?.filter((post) => post.category === category.value)
+                .map((post) => (
+                  <li style={{ paddingBottom: 4 }}>
+                    <Link to={`/post/${post.slug.current}`}>{post.title}</Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))}
+      </Flex>
+    </Container>
   );
 }
 
