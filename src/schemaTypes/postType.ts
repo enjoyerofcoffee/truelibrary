@@ -166,6 +166,22 @@ export const postType = defineType({
       type: "image",
     }),
     defineField({
+      title: "Category",
+      description:
+        "Posts to go to front page of table of contents (assign this so that it appears on the table of contents)",
+      name: "category",
+      type: "string",
+      options: {
+        list: [
+          { title: "Islam", value: "islam" },
+          { title: "Atheist", value: "atheist" },
+          { title: "Christians", value: "christian" },
+          { title: "Wahabi", value: "wahabi" },
+          { title: "Shias", value: "shia" },
+        ],
+      },
+    }),
+    defineField({
       name: "body",
       type: "array",
       of: [

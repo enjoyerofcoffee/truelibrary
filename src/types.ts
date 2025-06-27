@@ -15,6 +15,7 @@ export type Post = {
   title: string;
   author: string;
   body: PortableTextDocument;
+  category?: string;
   tags: string[];
   _id: string;
 };

@@ -1,4 +1,5 @@
 // import IsraelFindsOut from "./pages/IsraelFindsOut";
+import Home from "./pages/Home";
 import JoinUs from "./pages/JoinUs";
 import Library from "./pages/Library";
 import Scholars from "./pages/Scholars";
@@ -6,11 +7,11 @@ import Scholars from "./pages/Scholars";
 import Videos from "./pages/Videos";
 
 export const headerRoutes = [
-  // {
-  //   path: "/",
-  //   title: "Home",
-  //   element: Home,
-  // },
+  {
+    path: "/",
+    title: "Home",
+    element: Home,
+  },
   {
     path: "/library",
     title: "Library",

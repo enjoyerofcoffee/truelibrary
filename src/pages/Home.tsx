@@ -1,12 +1,57 @@
-import { Container, Flex } from "@mantine/core";
+import { Text, Container, Flex } from "@mantine/core";
 import PageTransition from "../animations/PageTransition";
 import classes from "./Home.module.css";
+import { useQuery } from "@tanstack/react-query";
+import { sanityClient } from "../client";
+import type { Post } from "../types";
+import { Link } from "react-router";
+
+const categories = [
+  { title: "Islam", value: "islam" },
+  { title: "Atheist", value: "atheist" },
+  { title: "Christians", value: "christian" },
+  { title: "Salafi / Wahabi", value: "wahabi" },
+  { title: "Shias", value: "shia" },
+];
+
+const fetchCategoryPosts = async () => {
+  const query = `*[_type == "post" && defined(category)]{
+    _id,
+    title,
+    slug,
+    category
+  }`;
+
+  const posts = await sanityClient.fetch(query);
+  return posts;
+};
 
 function Home() {
+  const { data } = useQuery<Post[]>({
+    queryKey: ["categoryPosts"],
+    queryFn: fetchCategoryPosts,
+  });
+
   return (
-    <Container className={classes.container} size={"sm"} py={24}>
+    <Container className={classes.container} size={"md"} py={24}>
       <Flex align={"center"} direction={"column"}>
         <h1>True Islam Library</h1>
+      </Flex>
+      <Flex pl={"sm"} direction={"column"}>
+        {categories.map((category) => (
+          <div>
+            <h2>{category.title}</h2>
+            <ul>
+              {data
+                ?.filter((post) => post.category === category.value)
+                .map((post) => (
+                  <li style={{ paddingBottom: 4 }}>
+                    <Link to={`/post/${post.slug.current}`}>{post.title}</Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))}
       </Flex>
     </Container>
   );
