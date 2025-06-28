@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { sanityClient } from "../client";
 import type { Post } from "../types";
 import { Link } from "react-router";
+import Bismillah from "../assets/Bismillah_Calligraphy.svg";
 
 const categories = [
   { title: "Islam", value: "islam" },
@@ -36,6 +37,7 @@ function Home() {
     <Container className={classes.container} size={"sm"} pb={"xl"}>
       <Flex align={"center"} direction={"column"}>
         <h1>True Islam Library</h1>
+        <img height={48} src={Bismillah} />
       </Flex>
       <Container size={"sm"}>
         {categories.map((category) => (
