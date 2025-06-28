@@ -1,4 +1,4 @@
-import { Container, Flex, BackgroundImage } from "@mantine/core";
+import { Container, Flex, Text, Group, Divider } from "@mantine/core";
 import PageTransition from "../animations/PageTransition";
 import classes from "./Home.module.css";
 import { useQuery } from "@tanstack/react-query";
@@ -34,26 +34,30 @@ function Home() {
   });
 
   return (
-    <Container className={classes.container} size={"sm"}>
+    <Container className={classes.container} size={"sm"} pb={"xl"}>
       <Flex align={"center"} direction={"column"}>
         <h1>True Islam Library</h1>
       </Flex>
-      <Flex px={"xl"} direction={"column"}>
+      <Container size={"sm"}>
         {categories.map((category) => (
           <div>
-            <h2>{category.title}</h2>
-            <ul>
+            <h2 className={classes.category__heading}>{category.title}</h2>
+            <Flex direction={"column"} gap={12}>
               {data
                 ?.filter((post) => post.category === category.value)
                 .map((post) => (
-                  <li style={{ paddingBottom: 4 }}>
-                    <Link to={`/post/${post.slug.current}`}>{post.title}</Link>
-                  </li>
+                  <Link
+                    className={classes.link}
+                    to={`/post/${post.slug.current}`}
+                  >
+                    <Text>{post.title}</Text>
+                    <Divider />
+                  </Link>
                 ))}
-            </ul>
+            </Flex>
           </div>
         ))}
-      </Flex>
+      </Container>
     </Container>
   );
 }

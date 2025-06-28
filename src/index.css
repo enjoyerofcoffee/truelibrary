@@ -16,6 +16,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --color: rgba(255, 255, 255, 0.87);
+  --dimmed-color: #9c9c9c;
   --primary-color: #005013;
   --highlight-color: #40a15e;
   --secondary-background: #2f2f2f;
