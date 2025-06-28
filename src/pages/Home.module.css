@@ -3,11 +3,6 @@
   border-radius: 12px;
 }
 
-.category__heading {
-  margin-top: 18px;
-  margin-bottom: 4px;
-}
-
 .link {
   color: var(--color);
 

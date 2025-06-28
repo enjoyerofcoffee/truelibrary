@@ -1,11 +1,10 @@
-import { Container, Flex, Text, Group, Divider } from "@mantine/core";
+import { Container, Flex, Text, Divider } from "@mantine/core";
 import PageTransition from "../animations/PageTransition";
 import classes from "./Home.module.css";
 import { useQuery } from "@tanstack/react-query";
 import { sanityClient } from "../client";
 import type { Post } from "../types";
 import { Link } from "react-router";
-import Background from "../assets/home.jpg";
 
 const categories = [
   { title: "Islam", value: "islam" },
@@ -41,7 +40,7 @@ function Home() {
       <Container size={"sm"}>
         {categories.map((category) => (
           <div>
-            <h2 className={classes.category__heading}>{category.title}</h2>
+            <h2>{category.title}</h2>
             <Flex direction={"column"} gap={12}>
               {data
                 ?.filter((post) => post.category === category.value)
