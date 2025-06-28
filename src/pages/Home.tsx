@@ -52,7 +52,7 @@ function Home() {
                     to={`/post/${post.slug.current}`}
                   >
                     <Text>{post.title}</Text>
-                    <Divider />
+                    <Divider mt={16} />
                   </Link>
                 ))}
             </Flex>
