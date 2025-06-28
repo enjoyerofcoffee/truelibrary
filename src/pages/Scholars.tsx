@@ -193,7 +193,11 @@ function Scholars() {
           <Grid>
             {englishScholars.map((scholar) => (
               <Grid.Col mt={"lg"} span={{ base: 12, sm: 6, md: 4 }}>
-                <Link to={scholar.link} style={{ color: "white" }}>
+                <Link
+                  to={scholar.link}
+                  target="_target"
+                  style={{ color: "white" }}
+                >
                   <Stack className={classes.scholar__card}>
                     <Avatar size={200} src={scholar.avatar} alt="it's me" />
                     <Text>{scholar.name}</Text>
@@ -209,7 +213,11 @@ function Scholars() {
           <Grid>
             {arabicScholar.map((scholar) => (
               <Grid.Col mt={"lg"} span={{ base: 12, sm: 6, md: 4 }}>
-                <Link to={scholar.link} style={{ color: "white" }}>
+                <Link
+                  to={scholar.link}
+                  target="_target"
+                  style={{ color: "white" }}
+                >
                   <Stack className={classes.scholar__card}>
                     <Avatar size={200} src={scholar.avatar} alt="it's me" />
                     <Text>{scholar.name}</Text>
