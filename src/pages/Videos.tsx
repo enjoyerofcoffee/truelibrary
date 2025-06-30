@@ -40,7 +40,7 @@ function Videos() {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} centered size={"70%"}>
+      <Modal opened={opened} onClose={close} centered size={"100%"}>
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${selectVideo}`}
           width={"100%"}
@@ -53,7 +53,7 @@ function Videos() {
           {videoCards.map((card) => {
             const thumbnailUrl = `https://img.youtube.com/vi/${card.videoId}/hqdefault.jpg`;
             return (
-              <Grid.Col span={4}>
+              <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
                 <Card
                   p="md"
                   radius="md"
