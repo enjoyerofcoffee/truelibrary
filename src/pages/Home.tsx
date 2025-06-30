@@ -9,7 +9,7 @@ import Bismillah from "../assets/Bismillah_Calligraphy.svg";
 
 const categories = [
   { title: "Islam", value: "islam" },
-  { title: "Atheist", value: "atheist" },
+  // { title: "Atheist", value: "atheist" },
   { title: "Christians", value: "christian" },
   { title: "Salafi / Wahabi", value: "wahabi" },
   { title: "Shias", value: "shia" },
