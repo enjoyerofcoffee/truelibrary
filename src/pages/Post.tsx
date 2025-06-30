@@ -4,6 +4,7 @@ import {
   Button,
   Center,
   Container,
+  Divider,
   Drawer,
   Flex,
   Group,
@@ -29,6 +30,8 @@ import {
   type AvatarMapper,
 } from "../assets/authorAvatars/mapper";
 import { Carousel } from "@mantine/carousel";
+import type React from "react";
+import type { ReactNode } from "react";
 
 const fetchPost = async (slug: string) => {
   const query = `*[_type == "post" && slug.current == $slug][0] {
@@ -148,6 +151,8 @@ function PostPage() {
             <Button onClick={openDrawer} variant="light" mb="md">
               Table of Contents
             </Button>
+            <PostInfo data={data} tableOfContents={tableOfContents} />
+            <Divider my={"lg"} pb={"sm"} />
             <Drawer
               opened={drawerOpened}
               onClose={closeDrawer}
@@ -247,3 +252,45 @@ function PostPage() {
 }
 
 export default PostPage;
+
+type PostInfoProps = {
+  data: Post;
+  responsive?: boolean;
+  tableOfContents: ReactNode;
+};
+const PostInfo = ({ data, responsive, tableOfContents }: PostInfoProps) => {
+  return (
+    <Group
+      gap={12}
+      className={classes.tags__wrapper}
+      pb={12}
+      visibleFrom={responsive ? "md" : ""}
+    >
+      <Stack w={320}>
+        <Text size="sm" ml={4} mt="sm" my="sm" c="dimmed">
+          Tags
+        </Text>
+        <Flex wrap="wrap" gap={4}>
+          {data.tags.map((tag) => (
+            <Pill key={tag} isSelectable={false}>
+              {badges.find((b) => b.value === tag)?.title}
+            </Pill>
+          ))}
+        </Flex>
+        <Stack>
+          <Text size="sm" ml={4} mt="sm" my="sm" c="dimmed">
+            Author
+          </Text>
+          <Flex align={"center"} gap={4}>
+            <Avatar
+              src={authorAvatarMap[data.author as keyof AvatarMapper]}
+              alt=""
+            />
+            <Text ml={4}>{data.author}</Text>
+          </Flex>
+        </Stack>
+        {responsive && tableOfContents}
+      </Stack>
+    </Group>
+  );
+};
