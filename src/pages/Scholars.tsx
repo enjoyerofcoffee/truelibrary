@@ -198,15 +198,13 @@ function Scholars() {
     <Container>
       <Center>
         <Stack>
-          <Group gap={0}>
-            <h1>English-Speaking Scholars</h1>
-            <Text c="dimmed">
-              We recommend you to follow these scholars below. They come from
-              traditional backgrounds and have well-rounded knowledge
-            </Text>
-          </Group>
+          <h1>Arabic-Speaking Scholars</h1>
+          <Text c="dimmed">
+            We recommend you to follow these scholars below. They come from
+            traditional backgrounds and have well-rounded knowledge
+          </Text>
           <Grid>
-            {englishScholars.map((scholar) => (
+            {arabicScholar.map((scholar) => (
               <Grid.Col mt={"lg"} span={{ base: 12, sm: 6, md: 4 }}>
                 <Link
                   to={scholar.link}
@@ -226,17 +224,21 @@ function Scholars() {
               </Grid.Col>
             ))}
           </Grid>
-          <h1>Arabic-Speaking Scholars</h1>
+          <Group gap={0}>
+            <h1>English-Speaking Scholars</h1>
+          </Group>
           <Grid>
-            {arabicScholar.map((scholar) => (
+            {englishScholars.map((scholar) => (
               <Grid.Col mt={"lg"} span={{ base: 12, sm: 6, md: 4 }}>
                 <Link
                   to={scholar.link}
                   target="_target"
                   style={{ color: "white" }}
                 >
-                  <Stack className={classes.scholar__card} align={"center"}>
-                    <Avatar size={200} src={scholar.avatar} alt="it's me" />
+                  <Stack className={classes.scholar__card}>
+                    <Flex justify={"center"}>
+                      <Avatar size={200} src={scholar.avatar} alt="it's me" />
+                    </Flex>
                     <Text>{scholar.name}</Text>
                     <Text c="dimmed" size="sm">
                       {scholar.description}
