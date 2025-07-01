@@ -30,7 +30,7 @@ import SchAhmedAlsharif from "../assets/scholars/SchAhmedAlsharif.jpg";
 // import AdnanIbrahim from "../assets/scholars/AdnanIbrahim.jpg";
 import ShaykhSulayamanVanAel from "../assets/scholars/ShaykhSulayamanVanAel.png";
 import MuftiMenk from "../assets/scholars/menk.jpg";
-import Home from "../assets/home.jpg";
+import Munur from "../assets/scholars/munur.jpg";
 import classes from "./Scholar.module.css";
 import { Link } from "react-router";
 
@@ -54,6 +54,20 @@ const englishScholars = [
     name: "Muhammad Said Ramadan al-Bouti",
     description:
       "Among greatest of all time. Syrian Sunni scholar known for his defense of traditional Islam. He taught at the University of Damascus and was killed in a mosque during the Syrian civil war.",
+  },
+  {
+    avatar: Munur,
+    name: "Ustadh Munir",
+    link: "https://m.youtube.com/@lh4horg",
+    description: (
+      <>
+        Focused on works of Nursi RA (best for strengthening faith). There is
+        also an Turkish lectures{" "}
+        <a href="https://www.youtube.com/@RisaleiNurBSN?" target="_target">
+          here
+        </a>
+      </>
+    ),
   },
   {
     avatar: ShamsTameez,
@@ -160,10 +174,26 @@ const arabicScholar = [
     description: "Excellent Imam incredibly knowledgeable on many subjects",
   },
   {
-    avatar: Home,
+    avatar: Munur,
     name: "Ustadh Munir",
-    link: "https://m.youtube.com/@RisaleiNurBSN",
-    description: "Focused on works of Nursi RA (best for strengthening faith)",
+    link: "https://m.youtube.com/channel/UC-Bec3z00xEkXotVpPSpKiw",
+    description: (
+      <div>
+        Focused on works of Nursi RA (best for strengthening faith). He has
+        another channel{" "}
+        <a
+          href="https://m.youtube.com/channel/UC-Bec3z00xEkXotVpPSpKiw"
+          target="_target"
+        >
+          here{" "}
+        </a>
+        and
+        <a href="https://m.youtube.com/@asyilaislamiyya" target="_target">
+          {" "}
+          here
+        </a>
+      </div>
+    ),
   },
   {
     avatar: AbdulKarimAlShdeifat,
