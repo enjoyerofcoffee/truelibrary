@@ -15,7 +15,7 @@ export const badges = [
   { title: "❤️ Prophet Muhammad ﷺ", value: "rasulallah" },
   { title: "⛪️ Christianity", value: "christianity" },
   { title: "⚛️ Atheism", value: "atheism" },
-  { title: "8thmane", value: "8thmane" },
+  { title: "🎱 8thmane", value: "8thmane" },
   { title: "📚 Library", value: "library" },
   { title: "🗣️ Debate", value: "debate" },
   { title: "🏴 Salafi", value: "salafi" },
