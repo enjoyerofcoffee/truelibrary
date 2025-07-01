@@ -44,14 +44,14 @@ const englishScholars = [
   },
   {
     avatar: ShSaedFoudeh,
-    name: "Shaykh Saed Foudeh",
+    name: "Saed Foudeh",
     link: "",
     description:
       "He doesn't speak English but lots of his stuff been translated and best in Kalaam. A prominent Canadian–Egyptian Muslim scholar, translator, and imam best known for The Clear Quran®, a modern and highly readable English translation of the Qur’an.",
   },
   {
     avatar: Bouti,
-    name: "Shaykh Muhammad Said Ramadan al-Bouti",
+    name: "Muhammad Said Ramadan al-Bouti",
     description:
       "Among greatest of all time. Syrian Sunni scholar known for his defense of traditional Islam. He taught at the University of Damascus and was killed in a mosque during the Syrian civil war.",
   },
@@ -78,21 +78,21 @@ const englishScholars = [
   },
   {
     avatar: Atabek,
-    name: "Shaykh Atabek Shukurov",
+    name: "Atabek Shukurov",
     link: "https://m.youtube.com/@Nazam44",
     description:
       "An Uzbek-born, UK-based Islamic scholar and Māturīdī theologian. Trained in Uzbekistan, Damascus, and Al-Azhar, he founded Afiya Institute and Avicenna Academy, teaching traditional Islamic sciences and addressing contemporary issues.",
   },
   {
     avatar: Arshad,
-    name: "Shaykh Asrar Rashid",
+    name: "Asrar Rashid",
     link: "https://www.youtube.com/@AsrarRashidOfficial?app=desktop",
     description:
       "Shaykh Asrar Rashid is a British-Pakistani Sunni scholar based in Birmingham, trained in Damascus and the UK. He teaches fiqh, kalām, and eschatology, and is known for public debates and books on theology and atheism.",
   },
   {
     avatar: ShaykhMuhammadYasirAlHanafi,
-    name: "Shaykh Muhammad Yasir Al‑Hanafi",
+    name: "Muhammad Yasir Al‑Hanafi",
     link: "https://m.youtube.com/@hanafifiqh",
     description:
       "UK-based Islamic scholar and Imam in Aylesbury, combining traditional Alim training with academic studies in philosophy (BA & MA) and a PhD in kalām. A graduate of the Islamic Institute of Dewsbury, he now teaches creed, fiqh, and philosophy, bridging classical Islamic sciences with modern intellectual thought.",
@@ -120,7 +120,7 @@ const englishScholars = [
   // },
   {
     avatar: ShaykhSulayamanVanAel,
-    name: "Sheikh Sulayaman Van Ael",
+    name: "Sulayaman Van Ael",
     link: "https://www.youtube.com/@drsulaymanvanael",
     description:
       "Belgian-born convert and UK-based scholar. He memorised the Qur’an in Sudan, holds ijāzahs in recitation and hadith, and degrees in theology and mental care. He teaches at Cambridge Muslim College and serves as chaplain at UK universities.",
