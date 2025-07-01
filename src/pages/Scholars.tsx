@@ -6,6 +6,7 @@ import {
   Grid,
   Stack,
   Group,
+  Flex,
 } from "@mantine/core";
 import PageTransition from "../animations/PageTransition";
 import DrMustafaKhattab from "../assets/scholars/DrMustafaKhattab.jpg";
@@ -18,17 +19,18 @@ import Atabek from "../assets/scholars/ShaykhAtabek.png";
 import Arshad from "../assets/scholars/arshad.jpg";
 import ShaykhMuhammadYasirAlHanafi from "../assets/scholars/ShaykhMuhammadYasirAlHanafi.webp";
 import NoumanAliKhan from "../assets/scholars/NoumanAliKhan.jpg";
-import ShaykhHatim from "../assets/scholars/ShaykhHatim.webp";
+// import ShaykhHatim from "../assets/scholars/ShaykhHatim.webp";
 import AdhamAlAsimi from "../assets/scholars/AdhamAlAsimi.jpg";
 import DrHamzaelBekri from "../assets/scholars/DrHamzaelBekri.jpg";
 import WalidAtiya from "../assets/scholars/WalidAtiya.jpeg";
-import UstadhMunir from "../assets/scholars/UstadhMunir.jpg";
+// import UstadhMunir from "../assets/scholars/UstadhMunir.jpg";
 import AbdulKarimAlShdeifat from "../assets/scholars/AbdulKarimAlShdeifat.jpg";
 import AhmadAlDamanhury from "../assets/scholars/AhmadAlDamanhury.jpg";
 import SchAhmedAlsharif from "../assets/scholars/SchAhmedAlsharif.jpg";
-import AdnanIbrahim from "../assets/scholars/AdnanIbrahim.jpg";
+// import AdnanIbrahim from "../assets/scholars/AdnanIbrahim.jpg";
 import ShaykhSulayamanVanAel from "../assets/scholars/ShaykhSulayamanVanAel.png";
 import MuftiMenk from "../assets/scholars/menk.jpg";
+import Home from "../assets/home.jpg";
 import classes from "./Scholar.module.css";
 import { Link } from "react-router";
 
@@ -41,25 +43,17 @@ const englishScholars = [
       "A prominent Canadian–Egyptian Muslim scholar, translator, and imam best known for The Clear Quran®, a modern and highly readable English translation of the Qur’an.",
   },
   {
-    avatar: Atabek,
-    name: "Shaykh Atabek Shukurov",
-    link: "https://m.youtube.com/@Nazam44",
+    avatar: ShSaedFoudeh,
+    name: "Shaykh Saed Foudeh",
+    link: "",
     description:
-      "An Uzbek-born, UK-based Islamic scholar and Māturīdī theologian. Trained in Uzbekistan, Damascus, and Al-Azhar, he founded Afiya Institute and Avicenna Academy, teaching traditional Islamic sciences and addressing contemporary issues.",
+      "He doesn't speak English but lots of his stuff been translated and best in Kalaam. A prominent Canadian–Egyptian Muslim scholar, translator, and imam best known for The Clear Quran®, a modern and highly readable English translation of the Qur’an.",
   },
   {
-    avatar: AHM,
-    name: "Abdul Hakim Murad",
-    link: "https://m.youtube.com/@CambridgeMuslimCollege",
+    avatar: Bouti,
+    name: "Shaykh Muhammad Said Ramadan al-Bouti",
     description:
-      "Abdul Hakim Murad is a British Muslim scholar, theologian, and Dean of Cambridge Muslim College. A convert to Islam, he’s known for promoting traditional Sunni thought, translating classical works, and founding the Cambridge Central Mosque.",
-  },
-  {
-    avatar: ShaykhSulayamanVanAel,
-    name: "Sheikh Sulayaman Van Ael",
-    link: "https://www.youtube.com/@drsulaymanvanael",
-    description:
-      "Belgian-born convert and UK-based scholar. He memorised the Qur’an in Sudan, holds ijāzahs in recitation and hadith, and degrees in theology and mental care. He teaches at Cambridge Muslim College and serves as chaplain at UK universities.",
+      "Among greatest of all time. Syrian Sunni scholar known for his defense of traditional Islam. He taught at the University of Damascus and was killed in a mosque during the Syrian civil war.",
   },
   {
     avatar: ShamsTameez,
@@ -69,11 +63,25 @@ const englishScholars = [
       "Instructor at Khairabadi Institute, UK Jamia al-Karam graduate, Cambridge Muslim College alumnus, former Aylesbury Mosque imam, now pursuing further studies at Abu Hanifa Institute in Istanbul.",
   },
   {
+    avatar: AHM,
+    name: "Abdul Hakim Murad",
+    link: "https://m.youtube.com/@CambridgeMuslimCollege",
+    description:
+      "Abdul Hakim Murad is a British Muslim scholar, theologian, and Dean of Cambridge Muslim College. A convert to Islam, he’s known for promoting traditional Sunni thought, translating classical works, and founding the Cambridge Central Mosque.",
+  },
+  {
     avatar: HamzaYusuf,
     name: "Hamza Yusuf",
     link: "https://m.youtube.com/@SandalaMediaCenter",
     description:
       "Shaykh Hamza Yusuf is an American Islamic scholar and co-founder of Zaytuna College. A convert to Islam, he’s known for promoting classical Sunni thought, translating key texts, and advancing Islamic education in the West.",
+  },
+  {
+    avatar: Atabek,
+    name: "Shaykh Atabek Shukurov",
+    link: "https://m.youtube.com/@Nazam44",
+    description:
+      "An Uzbek-born, UK-based Islamic scholar and Māturīdī theologian. Trained in Uzbekistan, Damascus, and Al-Azhar, he founded Afiya Institute and Avicenna Academy, teaching traditional Islamic sciences and addressing contemporary issues.",
   },
   {
     avatar: Arshad,
@@ -90,25 +98,32 @@ const englishScholars = [
       "UK-based Islamic scholar and Imam in Aylesbury, combining traditional Alim training with academic studies in philosophy (BA & MA) and a PhD in kalām. A graduate of the Islamic Institute of Dewsbury, he now teaches creed, fiqh, and philosophy, bridging classical Islamic sciences with modern intellectual thought.",
   },
   {
-    avatar: ShaykhHatim,
-    name: "Shaykh Hatim al-Awni",
-    link: "https://m.youtube.com/@bayyinah",
-    description:
-      "Shaykh Hatim al-Awni is a Saudi Hanbali scholar, hadith expert, and professor at Umm al-Qura University. A former member of Saudi Arabia’s Shura Council, he is known for his reformist critique of Wahhabism, emphasis on limiting takfīr, promoting intra-Sunni unity, and opposing extremism.",
-  },
-  {
     avatar: MuftiMenk,
     name: "Mufti Menk",
     link: "https://m.youtube.com/@muftimenkofficial",
     description:
-      "Mufti Menk is the Grand Mufti of Zimbabwe and a popular global Islamic speaker, known for accessible, motivational talks on faith, compassion, and daily life.",
+      "Mufti Menk for speeches. Was the Grand Mufti of Zimbabwe and a popular global Islamic speaker, known for accessible, motivational talks on faith, compassion, and daily life.",
   },
   {
     avatar: NoumanAliKhan,
     name: "Nouman Ali Khan",
     link: "https://m.youtube.com/@bayyinah",
     description:
-      "Nouman Ali Khan is founder of Bayyinah Institute, known for teaching Qur’anic Arabic and tafsīr.",
+      "Nouman Ali for some Quranic tafsirs. Khan is founder of Bayyinah Institute, known for teaching Qur’anic Arabic and tafsīr.",
+  },
+  // {
+  //   avatar: ShaykhHatim,
+  //   name: "Shaykh Hatim al-Awni",
+  //   link: "https://m.youtube.com/@bayyinah",
+  //   description:
+  //     "A big Hanbali scholar and some of his works is translated., Shaykh Hatim al-Awni is a Saudi Hanbali scholar, hadith expert, and professor at Umm al-Qura University. A former member of Saudi Arabia’s Shura Council, he is known for his reformist critique of Wahhabism, emphasis on limiting takfīr, promoting intra-Sunni unity, and opposing extremism.",
+  // },
+  {
+    avatar: ShaykhSulayamanVanAel,
+    name: "Sheikh Sulayaman Van Ael",
+    link: "https://www.youtube.com/@drsulaymanvanael",
+    description:
+      "Belgian-born convert and UK-based scholar. He memorised the Qur’an in Sudan, holds ijāzahs in recitation and hadith, and degrees in theology and mental care. He teaches at Cambridge Muslim College and serves as chaplain at UK universities.",
   },
 ];
 
@@ -145,7 +160,7 @@ const arabicScholar = [
     description: "Excellent Imam incredibly knowledgeable on many subjects",
   },
   {
-    avatar: UstadhMunir,
+    avatar: Home,
     name: "Ustadh Munir",
     link: "https://m.youtube.com/@RisaleiNurBSN",
     description: "Focused on works of Nursi RA (best for strengthening faith)",
@@ -169,13 +184,13 @@ const arabicScholar = [
     link: "https://www.youtube.com/@sch-Ahmed-Alsharif?app=desktop",
     description: "Great series on Aqeeda Books",
   },
-  {
-    avatar: AdnanIbrahim,
-    name: "عدنان ابراهيم",
-    link: "https://m.youtube.com/@Adnan-Ibrahim",
-    description:
-      "Islamic scholar known for his thought-provoking lectures and critical engagement with religious and scientific topics.",
-  },
+  // {
+  //   avatar: AdnanIbrahim,
+  //   name: "عدنان ابراهيم",
+  //   link: "https://m.youtube.com/@Adnan-Ibrahim",
+  //   description:
+  //     "Islamic scholar known for his thought-provoking lectures and critical engagement with religious and scientific topics.",
+  // },
 ];
 
 function Scholars() {
@@ -199,7 +214,9 @@ function Scholars() {
                   style={{ color: "white" }}
                 >
                   <Stack className={classes.scholar__card}>
-                    <Avatar size={200} src={scholar.avatar} alt="it's me" />
+                    <Flex justify={"center"}>
+                      <Avatar size={200} src={scholar.avatar} alt="it's me" />
+                    </Flex>
                     <Text>{scholar.name}</Text>
                     <Text c="dimmed" size="sm">
                       {scholar.description}
@@ -218,7 +235,7 @@ function Scholars() {
                   target="_target"
                   style={{ color: "white" }}
                 >
-                  <Stack className={classes.scholar__card}>
+                  <Stack className={classes.scholar__card} align={"center"}>
                     <Avatar size={200} src={scholar.avatar} alt="it's me" />
                     <Text>{scholar.name}</Text>
                     <Text c="dimmed" size="sm">
