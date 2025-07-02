@@ -20,7 +20,8 @@ const fetchCategoryPosts = async () => {
     _id,
     title,
     slug,
-    category
+    category,
+    categoryWeight
   }`;
 
   const posts = await sanityClient.fetch(query);
@@ -46,6 +47,12 @@ function Home() {
             <Flex direction={"column"} gap={12}>
               {data
                 ?.filter((post) => post.category === category.value)
+                .sort(
+                  (a, b) =>
+                    //Infinity here because categoryWeight can be undefined
+                    (a.categoryWeight || Infinity) -
+                    (b.categoryWeight || Infinity)
+                )
                 .map((post) => (
                   <Link
                     className={classes.link}

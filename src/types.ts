@@ -16,6 +16,7 @@ export type Post = {
   author: string;
   body: PortableTextDocument;
   category?: string;
+  categoryWeight?: number;
   tags: string[];
   _id: string;
 };

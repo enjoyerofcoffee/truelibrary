@@ -184,6 +184,13 @@ export const postType = defineType({
       },
     }),
     defineField({
+      title: "Category Weight",
+      description:
+        "Assign weight to the post. So if you press 1, it is more likely to be at the top of the category in the table of contents",
+      name: "categoryWeight",
+      type: "number",
+    }),
+    defineField({
       name: "body",
       type: "array",
       of: [
