@@ -11,7 +11,6 @@ function Videos() {
 
   const onClickCard = (videoId: string) => {
     setSelectVideo(videoId);
-    console.log(videoId);
     open();
   };
 

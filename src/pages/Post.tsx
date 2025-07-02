@@ -219,6 +219,24 @@ function PostPage() {
                   />
                 </div>
               ),
+              tiktok: ({ value }) => {
+                const { url } = value;
+                const match = url.match(/\/video\/(\d+)/);
+                return (
+                  <div className={classes.tiktok__container}>
+                    <script async src="https://www.tiktok.com/embed.js" />
+                    <div className={classes.tiktok__wrapper}>
+                      <iframe
+                        scrolling="no"
+                        title="Tiktok"
+                        src={`https://www.tiktok.com/embed/${match?.[1]}`}
+                        className={classes.tiktok__video}
+                        allow="encrypted-media;"
+                      ></iframe>
+                    </div>
+                  </div>
+                );
+              },
               carousel: ({ value }) => {
                 return (
                   <Carousel className={classes.carousel}>

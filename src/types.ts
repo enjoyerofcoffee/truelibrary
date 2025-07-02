@@ -43,12 +43,12 @@ type PortableTextBlock = {
   level?: number;
 };
 
-type PortableTextYouTube = {
+type PortableTextMedia = {
   _key: string;
-  _type: "youtube" | "image";
+  _type: "youtube" | "image" | "tiktok";
   url: string;
 };
 
-type PortableTextNode = PortableTextBlock | PortableTextYouTube;
+type PortableTextNode = PortableTextBlock | PortableTextMedia;
 
 export type PortableTextDocument = PortableTextNode[];
