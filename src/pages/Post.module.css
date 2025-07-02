@@ -55,14 +55,15 @@
   display: flex;
   justify-content: center;
   border-radius: 4px;
-  margin-top: 16px;
+  padding: 16px;
+  background-color: var(--background-color);
 }
 
 .tiktok__wrapper {
   position: relative;
   width: 100%;
   max-width: 360px;
-  height: 750px;
+  height: 480px;
   overflow: hidden;
 }
 

@@ -229,7 +229,7 @@ function PostPage() {
                       <iframe
                         scrolling="no"
                         title="Tiktok"
-                        src={`https://www.tiktok.com/embed/${match?.[1]}`}
+                        src={`https://www.tiktok.com/player/v1/${match?.[1]}`}
                         className={classes.tiktok__video}
                         allow="encrypted-media;"
                       ></iframe>
