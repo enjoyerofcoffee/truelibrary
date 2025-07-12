@@ -63,7 +63,7 @@ export function ArticleCard({ title, body, tags, search, onClick }: CardProps) {
                 <h4 style={{ fontSize: 10 }}>{children}</h4>
               ),
               blockquote: ({ children }) => (
-                <Blockquote style={{ margin: 0, padding: 5 }}>
+                <Blockquote style={{ marginTop: 8, padding: 5 }}>
                   {children}
                 </Blockquote>
               ),

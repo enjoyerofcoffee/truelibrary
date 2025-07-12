@@ -93,22 +93,22 @@ function Library() {
   return (
     <>
       <div>
-        <BackgroundImage h={200} src={Azhar}>
-          <Stack
-            h={"100%"}
-            className={classes.image__text}
-            justify="center"
-            gap={0}
-          >
-            <h1 className={classes.header}>
-              Articles from the True Islam Library
-            </h1>
-            <Text className={classes.sub} fw={800}>
-              Your source for authentic Islamic articles, insights, and
-              understanding.
-            </Text>
-          </Stack>
-        </BackgroundImage>
+        {/* <BackgroundImage h={200} src={Azhar}> */}
+        <Stack
+          h={"100%"}
+          className={classes.image__text}
+          justify="center"
+          gap={0}
+        >
+          <h1 className={classes.header}>
+            Articles from the True Islam Library
+          </h1>
+          <Text className={classes.sub} fw={800}>
+            Your source for authentic Islamic articles, insights, and
+            understanding.
+          </Text>
+        </Stack>
+        {/* </BackgroundImage> */}
       </div>
       <Container my="lg">
         <Autocomplete

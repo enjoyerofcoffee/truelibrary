@@ -11,6 +11,7 @@ const categories = [
   { title: "Islam", value: "islam" },
   // { title: "Atheist", value: "atheist" },
   { title: "Christians", value: "christian" },
+  { title: "Aqeedah", value: "aqeedah" },
   { title: '"Salafi" / Wahabi', value: "wahabi" },
   { title: "Quranist", value: "quranist" },
   { title: "Shias", value: "shia" },
