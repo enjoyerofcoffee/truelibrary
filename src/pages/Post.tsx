@@ -122,6 +122,7 @@ function PostPage() {
         gap={12}
         className={classes.tags__wrapper}
         pb={12}
+        px={14}
         visibleFrom="md"
       >
         <Stack w={320}>
