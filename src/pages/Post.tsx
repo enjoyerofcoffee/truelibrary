@@ -33,42 +33,42 @@ import {
 import { Carousel } from "@mantine/carousel";
 import type React from "react";
 import type { ReactNode } from "react";
+import type { fileAttachment } from "../schemaTypes/postType";
 
 const fetchPost = async (slug: string) => {
-  const query = `*[_type == "post" && slug.current == $slug][0] {
+  const query = `*[_type == "post" && slug.current == $slug][0]{
   _id,
   title,
   slug,
-  image {
-    asset->{
-      url
-    }
-  },
+  image{ asset->{ url } },
   body[]{
     ...,
     _type == "carousel" => {
       _type,
-      slides[] {
-        asset->{
-          _id,
-          url
-        }
-      }
+      slides[]{ asset->{ _id, url } }
     },
     _type == "image" => {
       _type,
-      asset->{
-        _id,
-        url
-      },
+      asset->{ _id, url },
       alt
+    },
+    _type == "fileAttachment" => {
+      _type,
+      description,
+      file{
+        asset->{
+          _id,
+          url,
+          mimeType,
+          originalFilename
+        }
+      }
     }
   },
   tags,
   author,
   publishedAt
 }`;
-
   const params = { slug };
   const post = await sanityClient.fetch(query, params);
   return post;
@@ -242,6 +242,22 @@ function PostPage() {
                       ></iframe>
                     </div>
                   </div>
+                );
+              },
+              fileAttachment: ({ value }) => {
+                const {
+                  file: {
+                    asset: { url },
+                  },
+                } = value;
+                return (
+                  <iframe
+                    src={url}
+                    width="100%"
+                    height="1000px"
+                    style={{ border: "none" }}
+                    title="PDF Viewer"
+                  />
                 );
               },
               carousel: ({ value }) => {
