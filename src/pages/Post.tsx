@@ -117,7 +117,7 @@ function PostPage() {
   );
 
   return (
-    <Container display="flex" size="xl" pt={"sm"}>
+    <Container size="xl" pt={"sm"}>
       <Group
         gap={12}
         className={classes.tags__wrapper}
