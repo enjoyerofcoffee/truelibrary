@@ -31,9 +31,7 @@ import {
   type AvatarMapper,
 } from "../assets/authorAvatars/mapper";
 import { Carousel } from "@mantine/carousel";
-import type React from "react";
 import type { ReactNode } from "react";
-import type { fileAttachment } from "../schemaTypes/postType";
 
 const fetchPost = async (slug: string) => {
   const query = `*[_type == "post" && slug.current == $slug][0]{
@@ -200,18 +198,20 @@ function PostPage() {
                 <li className={classes.list}>{children}</li>
               ),
               bullet: ({ children }) => (
-                <li className={classes.list}>{children}</li>
+                <li className={classes.list}>
+                  <Text>{children}</Text>
+                </li>
               ),
               link: ({ children, value }) => (
                 <a href={value.href} target={"_blank"}>
-                  {children}
+                  <Text>{children}</Text>
                 </a>
               ),
             },
             marks: {
               link: ({ children, value }) => (
                 <a href={value.href} target={"_blank"}>
-                  {children}
+                  <Text>{children}</Text>
                 </a>
               ),
             },
