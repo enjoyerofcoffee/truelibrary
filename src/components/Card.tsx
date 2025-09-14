@@ -1,4 +1,12 @@
-import { Blockquote, Card, Flex, Group, Popover, Text } from "@mantine/core";
+import {
+  Blockquote,
+  Card,
+  Flex,
+  Group,
+  Popover,
+  Stack,
+  Text,
+} from "@mantine/core";
 import classes from "./Card.module.css";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { PortableTextDocument } from "../types";
@@ -117,7 +125,7 @@ export function CardPills({ pills }: CardPillsProps) {
   const moreRef = useRef<HTMLDivElement | null>(null);
   const [visibleCount, setVisibleCount] = useState(pills.length);
   const [popoverOpened, setPopoverOpened] = useState(false);
-  const MAX_WIDTH = 220;
+  const MAX_WIDTH = 260;
 
   useEffect(() => {
     let total = 0;
@@ -177,13 +185,13 @@ export function CardPills({ pills }: CardPillsProps) {
             </div>
           </Popover.Target>
           <Popover.Dropdown onMouseLeave={() => setPopoverOpened(false)}>
-            <Flex direction="column" gap={4}>
+            <div className="flex flex-col">
               {hiddenPills.map((pill) => (
                 <Pill size="xs" key={pill.title}>
                   {pill.title}
                 </Pill>
               ))}
-            </Flex>
+            </div>
           </Popover.Dropdown>
         </Popover>
       )}
